@@ -15,8 +15,15 @@
 
     <body>
         <h2>really fun placeholder</h2>
-
+        <button id="update" type="button">SUBMIT</button>
         <script>
+            $("#update").on("click", function(e){
+                e.preventDefault();
+                var socket = io.connect("http://localhost");
+                socket.on("update", function(data){
+                    localData = data;
+                });
+            })
             /*
              * This variable holds the value of the file as it was defined
              * on the server.

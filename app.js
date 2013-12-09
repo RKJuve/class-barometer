@@ -8,8 +8,16 @@ var path = require("path"),
 
 // The server holds the contents of various open files in this
 // global object. 
-var fileContent = {};
+var Clients = {};
 
+var addClient = function(clientID) {
+    var temp = {getIt: true, comment: "stuff"};
+
+    Clients[clientID] = temp;
+};
+var removeClient = function(clientID) {
+    delete Clients[clientID];
+};
 
 // ExpressJS Server Definition
 app.set("views", path.join(__dirname, "templates"))
@@ -36,7 +44,12 @@ var server = http.createServer(app);
     io = io.listen(server);
 
     io.sockets.on('connection', function(client) {
-        console.log(client);
+        addClient(client.id);
+        io.sockets.emit("update", Clients);
+        client.on('disconnect', function(){
+            removeClient(client.id);
+            io.sockets.emit("update", Clients);
+        })
     });
 
 // start web server
