@@ -13,7 +13,8 @@ var fileContent = {};
 
 // ExpressJS Server Definition
 app.set("views", path.join(__dirname, "templates"))
-   .set("view engine", "hbs");
+   .set("view engine", "hbs")
+   .use(express.static(path.join(__dirname, "js")));
 
 app.get("/", function(req, res) {
     console.log("index hit");
@@ -35,12 +36,9 @@ var server = http.createServer(app);
     io = io.listen(server);
 
     io.sockets.on('connection', function(client) {
-        client.on("save", function(data) {
-            client.broadcast.emit("update", data);
-
-        });
+        console.log(client);
     });
 
 // start web server
 server.listen(3000);
-console.log("Started teamedit on port 3000");
+console.log("Started CodeFellows Class Barometer on port 3000");

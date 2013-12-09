@@ -1,94 +1,46 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>A Group Text Editor</title>
+        <title>CF Class Barometer</title>
+        {{!-- jQuery --}}
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-        <!-- https://code.google.com/p/google-diff-match-patch/ -->
-        <script src="//cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js"></script>
-
+        {{!-- underscore --}}
+        <script src="lib/underscore.js"></script>
+        {{!-- backbone --}}
+        <script src="lib/backbone.js"></script>
         {{!-- bring in socket.io --}}
         <script src="/socket.io/socket.io.js"></script>
 
     </head>
 
     <body>
-        <form>
-            <label for="filename">File Name</label>
-            <input type="text" name="filename" value="{{filename}}">
-            <br/>
-            <textarea name="content" rows="24" cols="80">{{content}}</textarea>
-            <br/>
-            <input type="button" name="save" value="Save File">
-        </form>
+        <h2>really fun placeholder</h2>
 
         <script>
-            var dmp = new diff_match_patch();
-
-            /*
-             * Used the diff_match_patch library to generate a patch file for
-             * to blocks of text.
-             */
-            function generatePatch(prevContent, newContent) {
-                console.log("----- Generating File Path -----");
-                var ms_start = (new Date()).getTime(),
-                    diff = dmp.diff_main(prevContent, newContent, true);
-
-                if(diff.length > 2)
-                    dmp.diff_cleanupSemantic(diff);
-
-                var patchList = dmp.patch_make(prevContent, newContent, diff),
-                    patchText = dmp.patch_toText(patchList),
-                    ms_end = (new Date()).getTime();
-
-                console.log("Patch generation took %s ms.", ms_end - ms_start);
-                console.log("--------------------------------");
-                return patchText;
-            }
-
-
-            /*
-             * Used the diff_match_patch library to apply a patch file to a block
-             * of text.
-             */
-            function applyPatch(patchText, content) {
-                console.log("----- Applying Patch -----");
-                var ms_start = (new Date()).getTime(),
-                    patchList = dmp.patch_fromText(patchText),
-                    newContent = dmp.patch_apply(patchList, content),
-                    ms_end = (new Date()).getTime();
-
-                console.log("Applying patch took %s ms.", ms_end - ms_start);
-                console.log("--------------------------");
-
-                return newContent[0];
-            }
-
-
             /*
              * This variable holds the value of the file as it was defined
              * on the server.
              */
-            var serverText = "{{content}}";
-            var socket = io.connect("http://localhost");
+            // var serverText = "{{content}}";
+            // var socket = io.connect("http://localhost");
             
-            socket.on("update", function(data){
-                var newText = applyPatch(data.p,serverText);
-                $("[name='content']").val(newText);
-                serverText = newText;
-            });
+            // socket.on("update", function(data){
+            //     var newText = applyPatch(data.p,serverText);
+            //     $("[name='content']").val(newText);
+            //     serverText = newText;
+            // });
 
-            /*
-             * Event handler for the save button
-             */
-            $("[name='save']").on("click", function() {
-                var clientText = $("[name='content']").val(),
-                    patch = generatePatch(serverText, clientText);
-                var name = $("[name='filename']").val();
-                // console.log(patch); // TODO: send this to the server instead
-                socket.emit("save", {"name": name, p: patch})
-                serverText = clientText;
-            });
+            // /*
+            //  * Event handler for the save button
+            //  */
+            // $("[name='save']").on("click", function() {
+            //     var clientText = $("[name='content']").val(),
+            //         patch = generatePatch(serverText, clientText);
+            //     var name = $("[name='filename']").val();
+            //     // console.log(patch); // TODO: send this to the server instead
+            //     socket.emit("save", {"name": name, p: patch})
+            //     serverText = clientText;
+            // });
         </script>
     </body>
 </html>
