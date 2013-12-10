@@ -1,65 +1,50 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>CF Class Barometer</title>
-        {{!-- jQuery --}}
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-        {{!-- underscore --}}
-        <script src="lib/underscore.js"></script>
-        {{!-- backbone --}}
-        <script src="lib/backbone.js"></script>
-        {{!-- bring in socket.io --}}
-        <script src="/socket.io/socket.io.js"></script>
+<head>
+  <title>CF Class Barometer</title>
+  {{!-- jQuery --}}
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  {{!-- underscore --}}
+  <script src="lib/underscore.js"></script>
+  {{!-- backbone --}}
+  <script src="lib/backbone.js"></script>
+  {{!-- bring in socket.io --}}
+  <script src="/socket.io/socket.io.js"></script>
+  
+  <script src="main.js"></script>
 
-    </head>
+</head>
 
-    <body>
-        <h2>really fun placeholder</h2>
-        <form action="">
-            <button id="joinClass" type="button">Join Class</button>
-            <select name="clientCond">
-            <option value="ready">Ready</option>
-            <option value="notReady">Not Ready</option>
-            <option value="needHelp" selected>Need Help</option>
-            <option value="success">Success</option>
-            </select>
-        </form>
-        <script>
-            $("#joinClass").on("click", function(e){
-                e.preventDefault();
-                var socket = io.connect("http://localhost");
-                socket.on("update", function(data){
-                    localData = data;
-                });
-                $("[name='clientCond']").on("change", function(e) {
-                    socket.emit("setStatus", $("[name='clientCond']").val() );
-                });
-            })
+<body>
+  <h2>really fun placeholder</h2>
+  <form action="">
+    <button id="joinClass" type="button">Join Class</button>
+    <select name="clientCond">
+      <option value="ready">Ready</option>
+      <option value="notReady">Not Ready</option>
+      <option value="needHelp" selected>Need Help</option>
+      <option value="success">Success</option>
+    </select>
+  </form>
 
-            /*
-             * This variable holds the value of the file as it was defined
-             * on the server.
-             */
-            // var serverText = "{{content}}";
-            // var socket = io.connect("http://localhost");
-            
-            // socket.on("update", function(data){
-            //     var newText = applyPatch(data.p,serverText);
-            //     $("[name='content']").val(newText);
-            //     serverText = newText;
-            // });
+  <script>
+    $("#joinClass").on("click", function(e){
+      e.preventDefault();
+      
+      var socket = io.connect("http://localhost");
+      socket.on("update", function(data){
+        App.classroom = new App.Classroom();
+        _.each(data, function(elem, index, list) {
+          var temp = { id: index, status: elem.status, comment: elem.comment };
+          console.log(temp);
+          App.classroom.create(temp);
+        });
 
-            // /*
-            //  * Event handler for the save button
-            //  */
-            // $("[name='save']").on("click", function() {
-            //     var clientText = $("[name='content']").val(),
-            //         patch = generatePatch(serverText, clientText);
-            //     var name = $("[name='filename']").val();
-            //     // console.log(patch); // TODO: send this to the server instead
-            //     socket.emit("save", {"name": name, p: patch})
-            //     serverText = clientText;
-            // });
-        </script>
-    </body>
+      });
+      $("[name='clientCond']").on("change", function(e) {
+        socket.emit("setStatus", $("[name='clientCond']").val() );
+      });
+    })
+  </script>
+</body>
 </html>

@@ -7,19 +7,19 @@ var path = require("path"),
 
 
 // The server holds the state of the 'classroom' in this global object. 
-var Clients = {};
+var Classroom = {};
 
-// functions that modify the Clients object
+// functions that modify the Classroom object
 function addClient(clientId) {
     var temp = {status: "", comment: "no comment"};
 
-    Clients[clientId] = temp;
+    Classroom[clientId] = temp;
 }
 function setStatus(clientId, updatedStatus) {
-    Clients[clientId].status = updatedStatus;
+    Classroom[clientId].status = updatedStatus;
 }
 function removeClient(clientId) {
-    delete Clients[clientId];
+    delete Classroom[clientId];
 }
 
 // ExpressJS Server Definition
@@ -49,16 +49,16 @@ var server = http.createServer(app);
     io.sockets.on('connection', function(client) {
 
         addClient(client.id);
-        io.sockets.emit("update", Clients);
+        io.sockets.emit("update", Classroom);
 
         client.on('setStatus', function(status) {
             setStatus(client.id, status);
-            io.sockets.emit("update", Clients);
+            io.sockets.emit("update", Classroom);
         });
         
         client.on('disconnect', function(){
             removeClient(client.id);
-            io.sockets.emit("update", Clients);
+            io.sockets.emit("update", Classroom);
         });
     });
 
