@@ -1,12 +1,23 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     jshint: {
-      files: ["Gruntfile.js", "app.js", "public/**.js", "package.json"]
+      files: [
+      "Gruntfile.js",
+      "app.js",
+      "public/**.js",
+      "package.json"]
     },
     copy: {
       main: {
         files: [
-          {expand: true, flatten: true, cwd: "bower_components/", src: ["backbone/backbone.js","underscore/underscore.js"], dest: "js/lib/"}
+          { expand: true, 
+            flatten: true,
+            cwd: "bower_components/",
+            src: ["backbone/backbone.js",
+                  "underscore/underscore.js",
+                  "handlebars/handlebars.js"],
+            dest: "js/lib/"
+          }
         ]
       }
     }
