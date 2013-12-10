@@ -31,7 +31,9 @@
                 socket.on("update", function(data){
                     localData = data;
                 });
-                //$("[name='clientCond']").on("")
+                $("[name='clientCond']").on("change", function(e) {
+                    socket.emit("setStatus", $("[name='clientCond']").val() );
+                });
             })
 
             /*

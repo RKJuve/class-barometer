@@ -15,8 +15,8 @@ function addClient(clientId) {
 
     Clients[clientId] = temp;
 }
-function updateStatus(clientId) {
-
+function setStatus(clientId, updatedStatus) {
+    Clients[clientId].status = updatedStatus;
 }
 function removeClient(clientId) {
     delete Clients[clientId];
@@ -50,11 +50,16 @@ var server = http.createServer(app);
 
         addClient(client.id);
         io.sockets.emit("update", Clients);
+
+        client.on('setStatus', function(status) {
+            setStatus(client.id, status);
+            io.sockets.emit("update", Clients);
+        });
         
         client.on('disconnect', function(){
             removeClient(client.id);
             io.sockets.emit("update", Clients);
-        })
+        });
     });
 
 // start web server
