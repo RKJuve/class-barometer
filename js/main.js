@@ -3,7 +3,7 @@ window.App = {}
 
 $.get('client.html', function(res) {
 	App.clientTemplate = res;
-};
+});
 
 //Backbone Client model
 App.Client = Backbone.Model.extend({
@@ -36,7 +36,7 @@ App.ClientView = Backbone.View.extend({
 		this.render();
 	},
 	render: function() {
-		var template = Handlebars.compile(clientTemplate);
+		var template = Handlebars.compile(App.clientTemplate);
 		this.$el.html(template(this.model.toJSON()));
 	}
 });
