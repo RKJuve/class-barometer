@@ -36,7 +36,7 @@
     $("#joinClass").on("click", function(e){
       e.preventDefault();
       
-      var socket = io.connect("http://localhost");
+      var socket = io.connect(window.location.origin);
       
       socket.on("update", function(data){
         if (!App.classroom) {
