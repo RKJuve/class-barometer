@@ -1,18 +1,26 @@
 {
-  "name": "teamedit",
+  "name": "CodeFellowsClassBarometer",
   "version": "0.0.1",
   "description": "A group text editor",
   "main": "app.js",
   "scripts": {
-    "start": "node app"
+    "postinstall": "bower install && grunt copy"
   },
-  "author": "Daniel T. Hable",
+  "author": "Ryan Juve",
   "license": "BSD-2-Clause",
   "dependencies": {
     "express": "~3.4.6",
     "hbs": "~2.4.0",
     "diff": "~1.0.7",
     "underscore": "~1.5.2",
-    "socket.io": "~0.9.16"
+    "socket.io": "~0.9.16",
+    "bower": "~1.2.7",
+    "grunt": "~0.4.2",
+    "grunt-cli": "~0.1.11",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-contrib-copy": "~0.4.1"
+  },
+  "scripts": {
+    "postinstall": "bower install && grunt copy"
   }
 }
