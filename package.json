@@ -13,12 +13,11 @@
     "hbs": "~2.4.0",
     "diff": "~1.0.7",
     "underscore": "~1.5.2",
-    "socket.io": "~0.9.16"
-  },
-  "devDependencies": {
+    "socket.io": "~0.9.16",
     "grunt-contrib-jshint": "~0.7.2",
     "grunt": "~0.4.2",
-    "grunt-contrib-copy": "~0.4.1"
+    "grunt-contrib-copy": "~0.4.1",
+    "bower": "~1.2.7",
   },
     "scripts": {
     "postinstall": "bower install && grunt onInstall",
