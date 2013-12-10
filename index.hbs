@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>CF Class Barometer</title>
+
   {{!-- jQuery --}}
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   {{!-- underscore --}}
@@ -12,9 +13,8 @@
   <script src="lib/handlebars.js"></script>
   {{!-- bring in socket.io --}}
   <script src="/socket.io/socket.io.js"></script>
-  
+  {{!-- backbone App --}}
   <script src="main.js"></script>
-  <script type="html" src="templates.html"></script>
 </head>
 
 <body>
@@ -27,6 +27,9 @@
       <option value="needHelp" selected>Need Help</option>
       <option value="success">Success</option>
     </select>
+    <textarea name="clientComment">
+      
+    </textarea>
   </form>
   <div id='dropzone'></div>
   <script>
@@ -35,26 +38,32 @@
       
       var socket = io.connect("http://localhost");
       socket.on("update", function(data){
-
-        App.classroom = new App.Classroom();
-
+        if (!App.classroom) {
+          App.classroom = new App.Classroom();
+        }
+        var temp = [];
         _.each(data, function(elem, index, list) {
-          var temp = { id: index, status: elem.status, comment: elem.comment };
-          //console.log(temp);
-          App.classroom.create(temp);
+          temp.push({ id: index, status: elem.status, comment: elem.comment });
         });
+
+        App.classroom.reset(temp);
 
         if (App.classroomView) {
           App.classroomView.el.innerHTML = '';
+          App.classroomView.render();
+        } else {
+          App.classroomView = new App.ClassroomView({
+            collection: App.classroom
+          }); 
         }
 
-        App.classroomView = new App.ClassroomView({
-          collection: App.classroom
-        });
 
       });
       $("[name='clientCond']").on("change", function(e) {
         socket.emit("setStatus", $("[name='clientCond']").val() );
+      });
+      $("[name='clientComment']").on("change", function(e) {
+        socket.emit("setComment", $("[name='clientComment']").val() );
       });
     })
   </script>

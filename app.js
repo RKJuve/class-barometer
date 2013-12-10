@@ -18,6 +18,9 @@ function addClient(clientId) {
 function setStatus(clientId, updatedStatus) {
     Classroom[clientId].status = updatedStatus;
 }
+function setComment(clientId, updatedComment) {
+    Classroom[clientId].comment = updatedComment;
+}
 function removeClient(clientId) {
     delete Classroom[clientId];
 }
@@ -54,6 +57,11 @@ var server = http.createServer(app);
 
         client.on('setStatus', function(status) {
             setStatus(client.id, status);
+            io.sockets.emit("update", Classroom);
+        });
+
+        client.on('setComment', function(comment) {
+            setComment(client.id, comment);
             io.sockets.emit("update", Classroom);
         });
         

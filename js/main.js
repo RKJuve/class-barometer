@@ -33,7 +33,7 @@ App.ClientView = Backbone.View.extend({
 	},
 	render: function() {
 		var that = this;
-		$.get('templates.html', function(res) {
+		$.get('client.html', function(res) {
 			var template = Handlebars.compile(res);
 			that.$el.html(template(that.model.toJSON()));
 		});
