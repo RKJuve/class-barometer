@@ -1,6 +1,10 @@
 // global app namespace
 window.App = {}
 
+$.get('client.html', function(res) {
+	App.clientTemplate = res;
+};
+
 //Backbone Client model
 App.Client = Backbone.Model.extend({
 	//override AJAX save method, don't need it/errors
@@ -32,10 +36,7 @@ App.ClientView = Backbone.View.extend({
 		this.render();
 	},
 	render: function() {
-		var that = this;
-		$.get('client.html', function(res) {
-			var template = Handlebars.compile(res);
-			that.$el.html(template(that.model.toJSON()));
-		});
+		var template = Handlebars.compile(clientTemplate);
+		this.$el.html(template(this.model.toJSON()));
 	}
 });
