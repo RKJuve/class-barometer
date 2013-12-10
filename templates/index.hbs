@@ -15,15 +15,25 @@
 
     <body>
         <h2>really fun placeholder</h2>
-        <button id="update" type="button">SUBMIT</button>
+        <form action="">
+            <button id="joinClass" type="button">Join Class</button>
+            <select name="clientCond">
+            <option value="ready">Ready</option>
+            <option value="notReady">Not Ready</option>
+            <option value="needHelp" selected>Need Help</option>
+            <option value="success">Success</option>
+            </select>
+        </form>
         <script>
-            $("#update").on("click", function(e){
+            $("#joinClass").on("click", function(e){
                 e.preventDefault();
                 var socket = io.connect("http://localhost");
                 socket.on("update", function(data){
                     localData = data;
                 });
+                //$("[name='clientCond']").on("")
             })
+
             /*
              * This variable holds the value of the file as it was defined
              * on the server.

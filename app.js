@@ -6,18 +6,21 @@ var path = require("path"),
     app = express();
 
 
-// The server holds the contents of various open files in this
-// global object. 
+// The server holds the state of the 'classroom' in this global object. 
 var Clients = {};
 
-var addClient = function(clientID) {
-    var temp = {getIt: true, comment: "stuff"};
+// functions that modify the Clients object
+function addClient(clientId) {
+    var temp = {status: "", comment: "no comment"};
 
-    Clients[clientID] = temp;
-};
-var removeClient = function(clientID) {
-    delete Clients[clientID];
-};
+    Clients[clientId] = temp;
+}
+function updateStatus(clientId) {
+
+}
+function removeClient(clientId) {
+    delete Clients[clientId];
+}
 
 // ExpressJS Server Definition
 app.set("views", path.join(__dirname, "templates"))
@@ -44,8 +47,10 @@ var server = http.createServer(app);
     io = io.listen(server);
 
     io.sockets.on('connection', function(client) {
+
         addClient(client.id);
         io.sockets.emit("update", Clients);
+        
         client.on('disconnect', function(){
             removeClient(client.id);
             io.sockets.emit("update", Clients);
