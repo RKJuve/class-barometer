@@ -12,7 +12,7 @@
   <script src="/socket.io/socket.io.js"></script>
   
   <script src="main.js"></script>
-
+  <script type="text/x-handlebars-template" id="clientTemplate" src="client.hbs"></script>
 </head>
 
 <body>
@@ -36,7 +36,7 @@
         App.classroom = new App.Classroom();
         _.each(data, function(elem, index, list) {
           var temp = { id: index, status: elem.status, comment: elem.comment };
-          console.log(temp);
+          //console.log(temp);
           App.classroom.create(temp);
         });
 

@@ -23,8 +23,9 @@ function removeClient(clientId) {
 }
 
 // ExpressJS Server Definition
-app.set("views", path.join(__dirname, "templates"))
+app.set("views", path.join(__dirname, ""))
    .set("view engine", "hbs")
+   .use(express.static(path.join(__dirname, "templates")))
    .use(express.static(path.join(__dirname, "js")));
 
 app.get("/", function(req, res) {
@@ -34,12 +35,12 @@ app.get("/", function(req, res) {
 
 app.get("/server", function(req, res) {
     console.log("server hit");
-    res.render("server");
+    //res.render("server");
 });
 
 app.get("/client", function(req, res) {
     console.log("server hit");
-    res.render("client");
+    //res.render("client");
 });
 
 // create and start io server thing
