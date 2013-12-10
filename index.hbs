@@ -37,6 +37,7 @@
       e.preventDefault();
       
       var socket = io.connect("http://localhost");
+      
       socket.on("update", function(data){
         if (!App.classroom) {
           App.classroom = new App.Classroom();
