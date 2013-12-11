@@ -6,23 +6,34 @@ var path = require("path"),
     app = express();
 
 
-// The server holds the state of the 'classroom' in this global object. 
-var Classroom = {};
+// The server holds the state of the classrooms in this global object. 
+var Classrooms = {};
 
-// functions that modify the Classroom object
-function addClient(clientId) {
-    var temp = {status: "", comment: "no comment"};
+// functions that modify the Classrooms object
+function addTeacher(classroomId, clientId) {
 
-    Classroom[clientId] = temp;
+    Classrooms[classroomId][clientId] = {status: "none", comment: ""};
+    // 
 }
-function setStatus(clientId, updatedStatus) {
-    Classroom[clientId].status = updatedStatus;
+function addStudent(classroomId, clientId) {
+    if (!Classrooms[classroomId]) {
+        Classrooms[classroomId] = {};
+    }
+    Classrooms[classroomId][clientId] = {status: "none", comment: ""};
+    console.log(Classrooms);
+    // [classroomId]
 }
-function setComment(clientId, updatedComment) {
-    Classroom[clientId].comment = updatedComment;
+function setStatus(classroomId, clientId, updatedStatus) {
+    Classrooms[classroomId][clientId].status = updatedStatus;
+    // [classroomId]
 }
-function removeClient(clientId) {
-    delete Classroom[clientId];
+function setComment(classroomId, clientId, updatedComment) {
+    Classrooms[classroomId][clientId].comment = updatedComment;
+    // [classroomId]
+}
+function removeClient(classroomId, clientId) {
+    delete Classrooms[classroomId][clientId];
+    // [classroomId]
 }
 
 // ExpressJS Server Definition
@@ -52,23 +63,28 @@ var server = http.createServer(app);
 
     io.sockets.on('connection', function(client) {
 
-        addClient(client.id);
-        io.sockets.emit("update", Classroom);
 
-        client.on('setStatus', function(status) {
-            setStatus(client.id, status);
-            io.sockets.emit("update", Classroom);
-        });
-
-        client.on('setComment', function(comment) {
-            setComment(client.id, comment);
-            io.sockets.emit("update", Classroom);
-        });
+        client.on('joinClassroom', function(classroomId){
+            client.join(classroomId);
+            addStudent(classroomId, client.id)
+            io.sockets.in(classroomId).emit("update", Classrooms[classroomId]);
         
-        client.on('disconnect', function(){
-            removeClient(client.id);
-            io.sockets.emit("update", Classroom);
+            client.on('setStatus', function(status) {
+                setStatus(classroomId, client.id, status);
+                io.sockets.in(classroomId).emit("update", Classrooms[classroomId]);
+            });
+
+            client.on('setComment', function(comment) {
+                setComment(classroomId, client.id, comment);
+                io.sockets.in(classroomId).emit("update", Classrooms[classroomId]);
+            });
+
+            client.on('disconnect', function(){
+                removeClient(classroomId, client.id);
+                io.sockets.in(classroomId).emit("update", Classrooms[classroomId]);
+            });
         });
+                
     });
 
 // start web server
