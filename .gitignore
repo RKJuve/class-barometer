@@ -1,3 +1,4 @@
 node_modules/
 bower_components/
 js/lib/
+.sass-cache
