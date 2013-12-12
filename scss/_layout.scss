@@ -22,10 +22,29 @@
   }
 }
 
+.student-timer{
+  text-align: right;
+}
+
 .floting-menu{
   width: 100%;
   h2{
     padding: 0 0 0 20px;
+  }
+  .create-topic-input{
+    float: left;
+    width: 80%;
+    border-radius: 0px;
+    margin: 8px 0;
+    border: none;
+    @include box-shadow(none);
+  }
+  .create-topic-btn{
+    float: left;
+    width: 20%;
+    height: 45px;
+    margin: 8px 0;
+    border-radius: 0px;
   }
   .understand-buttons{
     .def-btn{
@@ -76,6 +95,34 @@
   height: 40px;
   margin: 5px;
   display: inline-block;
+  &.defcon1{
+    background: $color-five;
+    &:hover{
+      background: darken($color-five, 15%);
+      @include transition(all 0.3s ease-in-out);
+    }
+  }
+  &.defcon2{
+    background: $color-six;
+    &:hover{
+      background: darken($color-six, 15%);
+      @include transition(all 0.3s ease-in-out);
+    }
+  }
+  &.defcon3{
+    background: $color-four;
+    &:hover{
+      background: darken($color-four, 15%);
+      @include transition(all 0.3s ease-in-out);
+    }
+  }
+}
+
+.status-t-view{
+  width: 100%;
+  margin: 5px;
+  padding: 5px;
+  display: block;
   &.defcon1{
     background: $color-five;
     &:hover{

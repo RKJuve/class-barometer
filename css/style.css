@@ -9805,14 +9805,37 @@ td.visible-print {
 }
 
 /* line 25, ../scss/_layout.scss */
+.student-timer {
+  text-align: right;
+}
+
+/* line 29, ../scss/_layout.scss */
 .floting-menu {
   width: 100%;
 }
-/* line 27, ../scss/_layout.scss */
+/* line 31, ../scss/_layout.scss */
 .floting-menu h2 {
   padding: 0 0 0 20px;
 }
-/* line 31, ../scss/_layout.scss */
+/* line 34, ../scss/_layout.scss */
+.floting-menu .create-topic-input {
+  float: left;
+  width: 80%;
+  border-radius: 0px;
+  margin: 8px 0;
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+/* line 42, ../scss/_layout.scss */
+.floting-menu .create-topic-btn {
+  float: left;
+  width: 20%;
+  height: 45px;
+  margin: 8px 0;
+  border-radius: 0px;
+}
+/* line 50, ../scss/_layout.scss */
 .floting-menu .understand-buttons .def-btn {
   width: 100%;
   padding: 15px 0;
@@ -9822,81 +9845,119 @@ td.visible-print {
   color: white;
   font-size: 4em;
 }
-/* line 40, ../scss/_layout.scss */
+/* line 59, ../scss/_layout.scss */
 .floting-menu .understand-buttons .def-btn:hover {
   text-decoration: none;
 }
 @media (min-width: 768px) {
-  /* line 31, ../scss/_layout.scss */
+  /* line 50, ../scss/_layout.scss */
   .floting-menu .understand-buttons .def-btn {
     width: 33.3333%;
     float: left;
   }
 }
-/* line 48, ../scss/_layout.scss */
+/* line 67, ../scss/_layout.scss */
 .floting-menu .understand-buttons .defcon1 {
   background: #00b247;
 }
-/* line 50, ../scss/_layout.scss */
+/* line 69, ../scss/_layout.scss */
 .floting-menu .understand-buttons .defcon1:hover {
   background: #006528;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 56, ../scss/_layout.scss */
+/* line 75, ../scss/_layout.scss */
 .floting-menu .understand-buttons .defcon2 {
   background: #ffa919;
 }
-/* line 58, ../scss/_layout.scss */
+/* line 77, ../scss/_layout.scss */
 .floting-menu .understand-buttons .defcon2:hover {
   background: #cc7f00;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 64, ../scss/_layout.scss */
+/* line 83, ../scss/_layout.scss */
 .floting-menu .understand-buttons .defcon3 {
   background: #cf3228;
 }
-/* line 66, ../scss/_layout.scss */
+/* line 85, ../scss/_layout.scss */
 .floting-menu .understand-buttons .defcon3:hover {
   background: #8f231c;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 
-/* line 74, ../scss/_layout.scss */
+/* line 93, ../scss/_layout.scss */
 .status {
   width: 40px;
   height: 40px;
   margin: 5px;
   display: inline-block;
 }
-/* line 79, ../scss/_layout.scss */
+/* line 98, ../scss/_layout.scss */
 .status.defcon1 {
   background: #00b247;
 }
-/* line 81, ../scss/_layout.scss */
+/* line 100, ../scss/_layout.scss */
 .status.defcon1:hover {
   background: #006528;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 86, ../scss/_layout.scss */
+/* line 105, ../scss/_layout.scss */
 .status.defcon2 {
   background: #ffa919;
 }
-/* line 88, ../scss/_layout.scss */
+/* line 107, ../scss/_layout.scss */
 .status.defcon2:hover {
   background: #cc7f00;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 93, ../scss/_layout.scss */
+/* line 112, ../scss/_layout.scss */
 .status.defcon3 {
   background: #cf3228;
 }
-/* line 95, ../scss/_layout.scss */
+/* line 114, ../scss/_layout.scss */
 .status.defcon3:hover {
+  background: #8f231c;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+/* line 121, ../scss/_layout.scss */
+.status-t-view {
+  width: 100%;
+  margin: 5px;
+  padding: 5px;
+  display: block;
+}
+/* line 126, ../scss/_layout.scss */
+.status-t-view.defcon1 {
+  background: #00b247;
+}
+/* line 128, ../scss/_layout.scss */
+.status-t-view.defcon1:hover {
+  background: #006528;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+/* line 133, ../scss/_layout.scss */
+.status-t-view.defcon2 {
+  background: #ffa919;
+}
+/* line 135, ../scss/_layout.scss */
+.status-t-view.defcon2:hover {
+  background: #cc7f00;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+/* line 140, ../scss/_layout.scss */
+.status-t-view.defcon3 {
+  background: #cf3228;
+}
+/* line 142, ../scss/_layout.scss */
+.status-t-view.defcon3:hover {
   background: #8f231c;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
