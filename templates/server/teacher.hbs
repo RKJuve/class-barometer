@@ -2,7 +2,7 @@
 <html>
 	<head>
 	  <title>CF Class Barometer</title>
-
+    <link rel="stylesheet" href="style.css">
 	  {{!-- jQuery --}}
 	  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	  {{!-- underscore --}}
@@ -17,13 +17,32 @@
 	  <script src="main.js"></script>
 	</head>
 	<body>
-	<form action="">
-		
-		<input name="classroomName" type="text"></input>
-		<button id="createClassroom" type="button">create classroom</button>
+  <div id="wrap">
+    <nav class="navigation" role="navigation">
+      <div class="container">
+        <h1>Class Barometer</h1>
+      </div>
+    </nav>
 
-	</form>
-	<div id='dropzone'></div>
+    <div id="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="page-title">Title</h2>
+          </div> 
+          <div class="col-md-12">
+            <form>
+              <input name="classroomName" type="text" class="form-control"></input>
+              <button type="button" id="createClassroom" class="btn btn-primary teacher">Create Classroom</button>
+            </form>
+          </div>
+          <div class="col-md-12">
+            <ul id='classroomList'></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 		 <script>
     // create Students collection instance
@@ -83,9 +102,21 @@
 
     //override form submit action
     $('#createClassroom').on('click', function(e){
-    	e.preventDefault();
-    	socket.emit('createClassroom', $("[name='classroomName']").val())
-    })
+      e.preventDefault();
+      var classroomName = $("[name='classroomName']");
+
+      // Trim whitespaces from before or after classroom name
+      var trimmedName = classroomName.val().replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+
+      // Prevent blank submisstions
+      if (trimmedName.length === 0) {
+        return;
+      }
+      socket.emit('createClassroom', trimmedName);
+
+      // Clear input after submission
+      classroomName.val("");
+    });
 
     $('form').on('submit', function(e){
       e.preventDefault();

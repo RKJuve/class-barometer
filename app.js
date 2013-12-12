@@ -120,7 +120,7 @@ io.sockets.on('connection', function(client) {
 
         io.sockets.on('studentJoinClassroom', function() {
 
-        })
+        });
 
     });
 

@@ -24,7 +24,7 @@ App.Classrooms = Backbone.Collection.extend({
 
 // Classrooms Collection View
 App.ClassroomsView = Backbone.View.extend({
-	el: "#dropzone",
+	el: "#classroomList",
 	initialize: function() {
 		this.render();
 	},
@@ -39,7 +39,7 @@ App.ClassroomsView = Backbone.View.extend({
 });
 // Classroom Model View
 App.ClassroomView = Backbone.View.extend({
-	tagName: null, // <--- super hacky way to stop backbone wrapping this in an extra div
+	tagName: "li",
 	initialize: function() {
 		this.render();
 	},
