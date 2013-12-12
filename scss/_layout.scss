@@ -1,0 +1,100 @@
+.container{
+  position: relative;
+}
+.navigation{
+  position: relative;
+  background: $color-two;
+  padding: 15px 0;
+  h1{
+    color: $color-one;
+    margin: 0;
+  }
+  .signed-in{
+    color: $color-one;
+    @media (min-width: $screen-sm-min) {
+      position: absolute;
+      top: 50%;
+      right: 0px;
+    }
+    .signed-in-name{
+      color: $color-four;
+    }
+  }
+}
+
+.floting-menu{
+  width: 100%;
+  h2{
+    padding: 0 0 0 20px;
+  }
+  .understand-buttons{
+    .def-btn{
+      width: 100%;
+      padding: 15px 0;
+      display: inline-block;
+      //list-style: none;
+      text-align: center;
+      vertical-align: middle; 
+      color: white;
+      font-size: 4em;
+      &:hover{
+        text-decoration: none;
+      }
+      @media (min-width: $screen-sm-min){
+        width: 33.3333%;
+        float: left;
+      }
+    }
+    .defcon1{
+      background: $color-five;
+      &:hover{
+        background: darken($color-five, 15%);
+        @include transition(all 0.3s ease-in-out);
+      }
+    }
+
+    .defcon2{
+      background: $color-six;
+      &:hover{
+        background: darken($color-six, 15%);
+        @include transition(all 0.3s ease-in-out);
+      }
+    }
+
+    .defcon3{
+      background: $color-four;
+      &:hover{
+        background: darken($color-four, 15%);
+        @include transition(all 0.3s ease-in-out);
+      }
+    }
+  }
+}
+
+.status{
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  display: inline-block;
+  &.defcon1{
+    background: $color-five;
+    &:hover{
+      background: darken($color-five, 15%);
+      @include transition(all 0.3s ease-in-out);
+    }
+  }
+  &.defcon2{
+    background: $color-six;
+    &:hover{
+      background: darken($color-six, 15%);
+      @include transition(all 0.3s ease-in-out);
+    }
+  }
+  &.defcon3{
+    background: $color-four;
+    &:hover{
+      background: darken($color-four, 15%);
+      @include transition(all 0.3s ease-in-out);
+    }
+  }
+}
