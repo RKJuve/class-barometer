@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student View</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="wrap">
+    <nav class="navigation" role="navigation">
+      <div class="container">
+        <h1>Class Barometer</h1>
+        <p class="signed-in">Signed in as: <span class="signed-in-name">Teacher Name</span></p>
+      </div>
+    </nav>
+
+    <div id="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Room Title</h2>
+          </div>
+          <div class="col-sm-3">
+            <h2>Who's Gettin it?</h2>
+            <div class="status-t-view defcon1">Name</div>
+            <div class="status-t-view defcon1">Name</div>
+            <div class="status-t-view defcon3">Name</div>
+            <div class="status-t-view defcon1">Name</div>
+            <div class="status-t-view defcon2">Name</div>
+            <div class="status-t-view defcon1">Name</div>
+            <div class="status-t-view defcon1">Name</div>
+            <div class="status-t-view defcon3">Name</div>
+            <div class="status-t-view defcon2">Name</div>
+            <div class="status-t-view defcon3">Name</div>
+          </div>
+          <div class="col-sm-9">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs teach-tabs">
+              <li><a href="#metrics" data-toggle="tab">Metrics</a></li>
+              <li><a href="#chat" data-toggle="tab">Chat</a></li>
+              <li><a href="#timers" data-toggle="tab">Timers</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div class="tab-pane fade in active" id="metrics">
+                <h2>Cool graphs and charts</h2>
+              </div>
+              <div class="tab-pane fade" id="chat">
+                <h2>The Chat</h2>
+              </div>
+              <div class="tab-pane fade" id="timers">
+                <h2>Timers</h2>
+                <div class="row timers-titles">
+                  <div class="col-md-7">
+                    <h3>Count Down</h3>
+                  </div>
+                  <div class="col-md-5">
+                    <h3><i class="fa fa-clock-o"></i> 00h 00m 00s</h3>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="00h">
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="00m">
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="00s">
+                  </div>
+                  <div class="col-md-3">
+                    <button type="button" class="btn btn-primary">Start</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="footer">
+    <div class="floting-menu">
+      <input type="text" class="create-topic-input form-control input-lg" placeholder="Create a new topic">
+      <button type="button" class="btn btn-primary create-topic-btn">Create / Reset</button>
+      <div class="understand-buttons">
+        <a href="#" class="def-btn defcon1">50%</a>
+        <a href="#" class="def-btn defcon2">20%</a>
+        <a href="#" class="def-btn defcon3 last">30%</a>
+      </div>
+    </div>
+  </div>
+  <script src="../bower_components/jquery/jquery.min.js"></script>
+  <script src="../bower_components/sass-bootstrap/js/tab.js"></script>
+  <script src="../bower_components/sass-bootstrap/js/transition.js"></script>
+
+
+  <script>
+    $('.teach-tabs a').click(function (e) {
+      e.preventDefault()
+      $(this).tab('show')
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+@import "compass";
+$experimental-support-for-svg: true;
+
+// Overall Variables
+@import "variables";
+
+// Fonts
+
+
+// Brings in Bootstrap SCSS see the _bootstrap.scss file to configure bootstrap dependencies
+@import "bootstrap/bootstrap";
+
+// Brings in Font Awesome SCSS see the _font-awesome.scss file to configure dependencies
+@import "fontAwesome/font-awesome";
+
+
+@import
+  "layout",
+  "sticky-footer"
+;
