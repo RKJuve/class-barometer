@@ -9811,14 +9811,19 @@ td.visible-print {
 }
 
 /* line 30, ../scss/_layout.scss */
+.timers-titles {
+  margin-bottom: 10px;
+}
+
+/* line 34, ../scss/_layout.scss */
 .floting-menu {
   width: 100%;
 }
-/* line 32, ../scss/_layout.scss */
+/* line 36, ../scss/_layout.scss */
 .floting-menu h2 {
   padding: 0 0 0 20px;
 }
-/* line 35, ../scss/_layout.scss */
+/* line 39, ../scss/_layout.scss */
 .floting-menu .create-topic-input {
   float: left;
   width: 80%;
@@ -9828,7 +9833,7 @@ td.visible-print {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-/* line 43, ../scss/_layout.scss */
+/* line 47, ../scss/_layout.scss */
 .floting-menu .create-topic-btn {
   float: left;
   width: 20%;
@@ -9836,7 +9841,7 @@ td.visible-print {
   margin: 8px 0;
   border-radius: 0px;
 }
-/* line 51, ../scss/_layout.scss */
+/* line 55, ../scss/_layout.scss */
 .floting-menu .understand-buttons .def-btn {
   width: 100%;
   padding: 15px 0;
@@ -9846,118 +9851,118 @@ td.visible-print {
   color: white;
   font-size: 4em;
 }
-/* line 60, ../scss/_layout.scss */
+/* line 64, ../scss/_layout.scss */
 .floting-menu .understand-buttons .def-btn:hover {
   text-decoration: none;
 }
 @media (min-width: 768px) {
-  /* line 51, ../scss/_layout.scss */
+  /* line 55, ../scss/_layout.scss */
   .floting-menu .understand-buttons .def-btn {
     width: 33.3333%;
     float: left;
   }
 }
-/* line 68, ../scss/_layout.scss */
+/* line 72, ../scss/_layout.scss */
 .floting-menu .understand-buttons .defcon1 {
   background: #00b247;
 }
-/* line 70, ../scss/_layout.scss */
+/* line 74, ../scss/_layout.scss */
 .floting-menu .understand-buttons .defcon1:hover {
   background: #006528;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 76, ../scss/_layout.scss */
+/* line 80, ../scss/_layout.scss */
 .floting-menu .understand-buttons .defcon2 {
   background: #ffa919;
 }
-/* line 78, ../scss/_layout.scss */
+/* line 82, ../scss/_layout.scss */
 .floting-menu .understand-buttons .defcon2:hover {
   background: #cc7f00;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 84, ../scss/_layout.scss */
+/* line 88, ../scss/_layout.scss */
 .floting-menu .understand-buttons .defcon3 {
   background: #cf3228;
 }
-/* line 86, ../scss/_layout.scss */
+/* line 90, ../scss/_layout.scss */
 .floting-menu .understand-buttons .defcon3:hover {
   background: #8f231c;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 
-/* line 94, ../scss/_layout.scss */
+/* line 98, ../scss/_layout.scss */
 .status {
   width: 40px;
   height: 40px;
   margin: 5px;
   display: inline-block;
 }
-/* line 99, ../scss/_layout.scss */
+/* line 103, ../scss/_layout.scss */
 .status.defcon1 {
   background: #00b247;
 }
-/* line 101, ../scss/_layout.scss */
+/* line 105, ../scss/_layout.scss */
 .status.defcon1:hover {
   background: #006528;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 106, ../scss/_layout.scss */
+/* line 110, ../scss/_layout.scss */
 .status.defcon2 {
   background: #ffa919;
 }
-/* line 108, ../scss/_layout.scss */
+/* line 112, ../scss/_layout.scss */
 .status.defcon2:hover {
   background: #cc7f00;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 113, ../scss/_layout.scss */
+/* line 117, ../scss/_layout.scss */
 .status.defcon3 {
   background: #cf3228;
 }
-/* line 115, ../scss/_layout.scss */
+/* line 119, ../scss/_layout.scss */
 .status.defcon3:hover {
   background: #8f231c;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 
-/* line 122, ../scss/_layout.scss */
+/* line 126, ../scss/_layout.scss */
 .status-t-view {
   width: 100%;
   margin: 5px;
   padding: 5px;
   display: block;
 }
-/* line 127, ../scss/_layout.scss */
+/* line 131, ../scss/_layout.scss */
 .status-t-view.defcon1 {
   background: #00b247;
 }
-/* line 129, ../scss/_layout.scss */
+/* line 133, ../scss/_layout.scss */
 .status-t-view.defcon1:hover {
   background: #006528;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 134, ../scss/_layout.scss */
+/* line 138, ../scss/_layout.scss */
 .status-t-view.defcon2 {
   background: #ffa919;
 }
-/* line 136, ../scss/_layout.scss */
+/* line 140, ../scss/_layout.scss */
 .status-t-view.defcon2:hover {
   background: #cc7f00;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 141, ../scss/_layout.scss */
+/* line 145, ../scss/_layout.scss */
 .status-t-view.defcon3 {
   background: #cf3228;
 }
-/* line 143, ../scss/_layout.scss */
+/* line 147, ../scss/_layout.scss */
 .status-t-view.defcon3:hover {
   background: #8f231c;
   -webkit-transition: all 0.3s ease-in-out;
