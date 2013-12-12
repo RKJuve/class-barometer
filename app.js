@@ -7,9 +7,6 @@ var path = require("path"),
 
 
 
-
-
-
 // The server holds the state of the classrooms in this global object. 
 // "schema":
 // Classrooms: {
@@ -39,38 +36,46 @@ function createClassroom(classroomId) {
     Classrooms[classroomId] = {};
     nameRegister[classroomId] = {};
 }
+
 function removeClassroom(classroomId) {
     // disconnect all sockets?
     delete Classrooms[classroomId];
     delete nameRegister[classroomId];
 }
+
 function addStudent(classroomId, clientId, studentName) {
     // work around until teacher creating classrooms is working
     // replace with error message about no class to join?
     // if (!Classrooms[classroomId]) {
     //     createClassroom(classroomId)
     // }
-    Classrooms[classroomId][clientId] = {status: "none", comment: ""};
+    Classrooms[classroomId][clientId] = {
+        status: "none",
+        comment: ""
+    };
     nameRegister[classroomId][clientId] = studentName;
 }
+
 function setStatus(classroomId, clientId, updatedStatus) {
     Classrooms[classroomId][clientId].status = updatedStatus;
     // [classroomId]
 }
+
 function setComment(classroomId, clientId, updatedComment) {
     Classrooms[classroomId][clientId].comment = updatedComment;
     // [classroomId]
 }
+
 function removeClient(classroomId, clientId) {
     delete Classrooms[classroomId][clientId];
     delete nameRegister[classroomId][clientId];
 }
 
 // ExpressJS Server Definition
-app.set("views", path.join(__dirname, ""))
-   .set("view engine", "hbs")
-   .use(express.static(path.join(__dirname, "templates")))
-   .use(express.static(path.join(__dirname, "js")));
+app.set("views", path.join(__dirname, "templates/server"))
+    .set("view engine", "hbs")
+    .use(express.static(path.join(__dirname, "templates/client")))
+    .use(express.static(path.join(__dirname, "js")));
 
 app.get("/", function(req, res) {
     console.log("newindex hit");
@@ -94,57 +99,57 @@ app.get("/teacher", function(req, res) {
 
 // create app server, wrap it in websocket server
 var server = http.createServer(app);
-    io = io.listen(server);
+io = io.listen(server);
 
 // websocket behavior
 io.sockets.on('connection', function(client) {
     //after join, emit list of available classrooms
-   client.emit('classroomsUpdate', _.keys(Classrooms));
+    client.emit('classroomsUpdate', _.keys(Classrooms));
 
     //create classroom currently before joining as teacher, potential security hole
-    client.on('createClassroom', function(data){
+    client.on('createClassroom', function(data) {
         createClassroom(data);
         console.log(Classrooms);
         io.sockets.emit('classroomsUpdate', _.keys(Classrooms));
     });
 
     //teacher connection
-    client.on('teacherJoinClassroom', function(classroomId){
+    client.on('teacherJoinClassroom', function(classroomId) {
         client.join(classroomId);
         client.emit('update', Classrooms[classroomId]);
         client.emit('nameUpdate', nameRegister[classroomId]);
         console.log("teacher joined classroom");
 
 
-        io.sockets.on('studentJoinClassroom', function(){
+        io.sockets.on('studentJoinClassroom', function() {
 
         })
 
     });
 
     // student connection
-    client.on('studentJoinClassroom', function(classroomId, studentName){
+    client.on('studentJoinClassroom', function(classroomId, studentName) {
         client.join(classroomId);
         addStudent(classroomId, client.id, studentName);
-        io.sockets.in(classroomId).emit("update", Classrooms[classroomId]);
-                console.log(Classrooms);
+        io.sockets. in (classroomId).emit("update", Classrooms[classroomId]);
+        console.log(Classrooms);
         console.log(nameRegister);
         client.on('setStatus', function(status) {
             setStatus(classroomId, client.id, status);
-            io.sockets.in(classroomId).emit("update", Classrooms[classroomId]);
+            io.sockets. in (classroomId).emit("update", Classrooms[classroomId]);
         });
 
         client.on('setComment', function(comment) {
             setComment(classroomId, client.id, comment);
-            io.sockets.in(classroomId).emit("update", Classrooms[classroomId]);
+            io.sockets. in (classroomId).emit("update", Classrooms[classroomId]);
         });
 
-        client.on('disconnect', function(){
+        client.on('disconnect', function() {
             removeClient(classroomId, client.id);
-            io.sockets.in(classroomId).emit("update", Classrooms[classroomId]);
+            io.sockets. in (classroomId).emit("update", Classrooms[classroomId]);
         });
     });
-            
+
 });
 
 // start web server
