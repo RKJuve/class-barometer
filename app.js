@@ -75,15 +75,12 @@ function removeClient(classroomId, clientId) {
 app.set("views", path.join(__dirname, "templates/server"))
     .set("view engine", "hbs")
     .use(express.static(path.join(__dirname, "templates/client")))
-    .use(express.static(path.join(__dirname, "js")));
+    .use(express.static(path.join(__dirname, "js")))
+    .use(express.static(path.join(__dirname, "css")))
+    .use(express.static(path.join(__dirname, "bower_components")));
 
 app.get("/", function(req, res) {
     console.log("newindex hit");
-    res.render("newIndex");
-});
-
-app.get("/oldIndex", function(req, res) {
-    console.log("index hit");
     res.render("index");
 });
 

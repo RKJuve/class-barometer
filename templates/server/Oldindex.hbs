@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CF Class Barometer</title>
+
+  {{!-- jQuery --}}
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  {{!-- underscore --}}
+  <script src="lib/underscore.js"></script>
+  {{!-- backbone --}}
+  <script src="lib/backbone.js"></script>
+  {{!-- handlebars --}}
+  <script src="lib/handlebars.js"></script>
+  {{!-- bring in socket.io --}}
+  <script src="/socket.io/socket.io.js"></script>
+  {{!-- backbone App --}}
+  <script src="main.js"></script>
+</head>
+
+<body>
+  <h2>really fun placeholder</h2>
+  <form action="">
+    <input type="text" name="classroomId"><br>
+    <button id="joinClass" type="button">Join Class</button>
+    <select name="clientCond">
+      <option value="ready">Ready</option>
+      <option value="notReady">Not Ready</option>
+      <option value="needHelp" selected>Need Help</option>
+      <option value="success">Success</option>
+    </select>
+    <textarea name="clientComment">
+      
+    </textarea>
+  </form>
+  <div id='dropzone'></div>
+  <iframe src="https://kiwiirc.com/client/chat.freenode.com/?nick=testname|?&theme=basic#codefellows" style="border:0; width:100%; height:450px;"></iframe>
+  <script>
+    // start socket connection
+    var socket = io.connect(window.location.origin);
+
+    // create Students collection instance
+    App.students = new App.Students();
+
+    // socket update behavior
+    socket.on("update", function(data){
+      var temp = [];
+      _.each(data, function(elem, index, list) {
+        temp.push({ id: index, status: elem.status, comment: elem.comment });
+      });
+
+      App.students.reset(temp);
+
+      if (App.studentsView) {
+        App.studentsView.el.innerHTML = '';
+        App.studentsView.render();
+      } else {
+        App.studentsView = new App.StudentsView({
+          collection: App.students
+        }); 
+      }
+    });
+
+    //override form submit action, join classroom instead
+    $('form').on('submit', function(e){
+      e.preventDefault();
+      //oh god this is hacky. TODO: split joining a class into a function
+      $("#joinClass").trigger("click");
+    });
+    
+    $("#joinClass").on("click", function(e){
+      e.preventDefault();
+      var classroomId = $("[name='classroomId']").val();
+      // below not wired to anything on page yet
+      var studentName = $("[name='studentName']").val();
+      socket.emit('studentJoinClassroom', classroomId, studentName);
+
+      $("[name='clientCond']").on("change", function(e) {
+        socket.emit("setStatus", $("[name='clientCond']").val() );
+      });
+
+      $("[name='clientComment']").on("change", function(e) {
+        socket.emit("setComment", $("[name='clientComment']").val() );
+      });
+    })
+  </script>
+</body>
+</html>

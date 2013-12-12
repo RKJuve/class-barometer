@@ -2,10 +2,10 @@
 window.App = {}
 
 // get templates
-$.get('student.html', function(res) {
+$.get('statusBlock.html', function(res) {
 	App.studentTemplate = res;
 });
-$.get('classroom.html', function(res) {
+$.get('classroomList.html', function(res) {
 	App.classroomTemplate = res;
 });
 
