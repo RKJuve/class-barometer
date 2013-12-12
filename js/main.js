@@ -12,7 +12,9 @@ $.get('classroom.html', function(res) {
 //Backbone Classroom model
 App.Classroom = Backbone.Model.extend({
 	//override AJAX save method, don't need it/errors
-	save: function() { return null; }
+	save: function() {
+		return null;
+	}
 });
 
 //Backbone Classrooms Collection
@@ -27,10 +29,12 @@ App.ClassroomsView = Backbone.View.extend({
 		this.render();
 	},
 	render: function() {
-		this.collection.each(function(model){
-            App.classroomView = new App.ClassroomView({model:model});
-            this.$el.append(App.classroomView.el);
-    	}, this);
+		this.collection.each(function(model) {
+			App.classroomView = new App.ClassroomView({
+				model: model
+			});
+			this.$el.append(App.classroomView.el);
+		}, this);
 	}
 });
 // Classroom Model View
@@ -53,12 +57,12 @@ App.ClassroomView = Backbone.View.extend({
 
 
 
-
-
 //Backbone Student model
 App.Student = Backbone.Model.extend({
 	//override AJAX save method, don't need it/errors
-	save: function() { return null; }
+	save: function() {
+		return null;
+	}
 });
 
 // Backbone Students collection
@@ -73,10 +77,12 @@ App.StudentsView = Backbone.View.extend({
 		this.render();
 	},
 	render: function() {
-		this.collection.each(function(model){
-            App.studentView = new App.StudentView({model:model});
-            this.$el.append(App.studentView.el);
-    	}, this);
+		this.collection.each(function(model) {
+			App.studentView = new App.StudentView({
+				model: model
+			});
+			this.$el.append(App.studentView.el);
+		}, this);
 	}
 });
 // Student Model View
