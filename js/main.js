@@ -23,6 +23,22 @@ App.SelectUserPathView = Backbone.View.extend({
 	initialize: function() {
 		console.log("SelectUserPathView initialized");
 		this.render();
+		this.emptyFooter();
+	},
+
+	emptyFooter: function() {
+		console.log("emptyfooter");
+		$("#footer").css({
+			"margin-top": "-30px",
+			"height": "30px",
+			"position": "relative"
+		});
+		$("#main").css({
+			"padding-bottom": "30px"
+		});
+		$(".def-btn").css({
+			"width": "33.3333%"
+		});
 	},
 
 	teacherPath: function() {
@@ -75,7 +91,7 @@ App.TeacherCreateClassroomParentView = Backbone.View.extend({
 	},
 
 	joinClassroom: function(e) {
-		var data = $(e.target).data("name");
+		var data = $(e.target).children().data("name");
 		App.socket.emit('teacherJoinClassroom', data);
 
 		App.router.navigate("teacher/" + data, {

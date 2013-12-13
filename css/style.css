@@ -9827,7 +9827,7 @@ td.visible-print {
 .classroomList li {
   width: 50%;
   text-align: center;
-  padding: 20px;
+  padding: 10px;
   background: #343434;
   margin: 5px;
   -webkit-transition: all 0.3s ease-in-out;
