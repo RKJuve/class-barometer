@@ -67,6 +67,7 @@ App.TeacherCreateClassroomParentView = Backbone.View.extend({
 	},
 
 	render: function() {
+		console.log("render teach render!!!");
 		this.$el.empty();
 		var source = $("#teacherCreateClassroomParent").html();
 		var template = Handlebars.compile(source);
@@ -126,7 +127,6 @@ App.TeacherClassroomParentView = Backbone.View.extend({
 	initialize: function() {
 		console.log("TeacherClassroomParentView initialized");
 		this.render();
-
 	},
 
 	startBootstrapTabs: function() {
@@ -137,6 +137,7 @@ App.TeacherClassroomParentView = Backbone.View.extend({
 	},
 
 	render: function() {
+		$("#contentArea").empty();
 		var source = $("#teacherClassroomView").html();
 		var template = Handlebars.compile(source);
 		// Probably will need the toJSON

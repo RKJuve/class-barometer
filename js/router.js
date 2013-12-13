@@ -57,7 +57,7 @@ App.Router = Backbone.Router.extend({
     console.log("joinClassroom Route fired");
 
     // this needs to poll to update current info within the classroom
-    App.socket.emit("poll");
+    //App.socket.emit("poll");
 
     // Passes current classrooms students and data
     // App.socket.on('studentsUpdate', function(data) {
