@@ -108,7 +108,12 @@ io = io.listen(server);
 io.sockets.on('connection', function(client) {
     //after join, emit list of available classrooms
     client.emit('classroomsUpdate', _.keys(Classrooms));
-    
+
+    client.on('topicUpdate', function(data) {
+        console.log(data);
+        io.sockets.emit('updatedTopic', data);
+    });
+
     // This is a response to a poll request for classroom information from the teacher route
     client.on('poll', function() {
         client.emit('classroomsUpdate', _.keys(Classrooms));

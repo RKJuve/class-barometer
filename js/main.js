@@ -182,6 +182,14 @@ App.TeacherClassroomParentView = Backbone.View.extend({
 		this.$el.html(html);
 		// You need this to initalize the bootstrap tabs
 		this.startBootstrapTabs();
+	},
+
+	//this event should be moved to sub-view when ready
+	updateStatus: function() {
+		//Assumes there is a resources object within App
+		//The jqeury selector will need to be updated based on subview as well
+		App.resources.status = $('#updateStatus').val();
+		socket.emit('topicUpdate', App.resources.status);
 	}
 
 });
