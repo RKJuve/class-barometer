@@ -23,6 +23,22 @@ App.SelectUserPathView = Backbone.View.extend({
 	initialize: function() {
 		console.log("SelectUserPathView initialized");
 		this.render();
+		this.emptyFooter();
+	},
+
+	emptyFooter: function() {
+		console.log("emptyfooter");
+		$("#footer").css({
+			"margin-top": "-30px",
+			"height": "30px",
+			"position": "relative"
+		});
+		$("#main").css({
+			"padding-bottom": "30px"
+		});
+		$(".def-btn").css({
+			"width": "33.3333%"
+		});
 	},
 
 	teacherPath: function() {
