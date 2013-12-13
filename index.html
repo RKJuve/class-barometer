@@ -1,56 +1,86 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>CF Class Barometer</title>
-    <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-  <div id="wrap">
-    <nav class="navigation" role="navigation">
-      <div class="container">
-        <h1>Class Barometer</h1>
-      </div>
-    </nav>
+  <head>
+    <title>CF Class Barometer</title>
+  <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div id="wrap">
+      <nav class="navigation" role="navigation">
+        <div class="container">
+          <h1>Class Barometer</h1>
+          <p class="signed-in">Who made this sweet APP? <span data-toggle="modal" data-target="#creators" class="signed-in-name">These Guys!</span></p>
+        </div>
+      </nav>
 
-    <div id="main">
-      <div class="container">
-        <div id="contentArea" class="row">
+      <div id="main">
+        <div class="container">
+          <div id="contentArea" class="row">
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    <!-- Modal -->
+    <div class="modal fade" id="creators" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 class="modal-title" id="myModalLabel">Brought to you by latenights & hardwork.</h3>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li><a href="http://github.com/pcostanz" target="_blank">Patrick Costanzo <i class="fa fa-github"></i></a></li>
+              <li><a href="http://github.com/tskillian" target="_blank">Tim Killian <i class="fa fa-github"></i></a></li>
+              <li><a href="http://github.com/RKJuve" target="_blank">Ryan Juve <i class="fa fa-github"></i></a></li>
+              <li><a href="http://github.com/jesserathbun" target="_blank">Jesse Rathbun <i class="fa fa-github"></i></a></li>
+            </ul>
+            <p>Thanks Code Fellows for bringing us all together!</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
     <script id="selectYourPath" type="text/x-handlebars-template">
       <div class="col-md-12">
         <h2>Are you here to Teach or Learn?</h2>
       </div> 
-      <div class="col-md-12">
-        <h3>Start Creating Classes</h3>
-        <button type="button" class="btn btn-primary teacher">Teacher</button>
-        <h3>Find a class to join</h3>
-        <button type="button" class="btn btn-primary student">Student</button>
+      <div class="col-md-6">
+        <div class="teacherPath">
+          <h3><i class="fa fa-plus"></i><br>Create a classroom</h3>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="studentPath">
+          <h3><i class="fa fa-search"></i><br>Find a classroom</h3>
+        </div>
       </div>
     </script>
 
     <script id="teacherCreateClassroomParent" type="text/x-handlebars-template">
       <div class="col-md-12">
-        <h2>Create or Join a Class</h2>
+        <h2>Create or Join a Classroom</h2>
       </div> 
       <div class="col-md-12">
-        <form id="createClassroomForm">
-        <input name="classroomName" type="text" class="form-control" placeholder="What would you like to call your class?"></input>
-        <button type="submit" id="createClassroom" class="btn btn-primary teacher">Create Classroom</button>
+        <form id="createClassroomForm" class="createClassroomForm">
+        <input name="classroomName" type="text" class="form-control input-lg" placeholder="What would you like to call your classroom?"></input>
+        <button type="submit" id="createClassroom" class="btn btn-primary btn-lg teacher">Create Classroom</button>
         </form>
       </div>
       <div class="col-md-12">
-        <h3>Current Classes</h3>
-        <ul id='classroomList'></ul>
+        <h3><i class="fa fa-bell"></i> Current Classrooms</h3>
+        <ul id='classroomList' class="classroomList"></ul>
       </div>
 
     </script>
 
     <script id="classroomListItem" type="text/x-handlebars-template">
-      <span data-name="{{name}}" class="classroom">{{name}}</span>
+      <span data-name="{{name}}" class="classroom">
+        <i class="fa fa-users"></i><br> {{name}}
+      </span>
     </script>
 
     <script id="teacherClassroomView" type="text/x-handlebars-template">
@@ -59,16 +89,16 @@
       </div>
       <div class="col-sm-3">
         <h2>Whos Gettin it?</h2>
-        <div class="status-t-view defcon1">Name</div>
-        <div class="status-t-view defcon1">Name</div>
-        <div class="status-t-view defcon3">Name</div>
-        <div class="status-t-view defcon1">Name</div>
-        <div class="status-t-view defcon2">Name</div>
-        <div class="status-t-view defcon1">Name</div>
-        <div class="status-t-view defcon1">Name</div>
-        <div class="status-t-view defcon3">Name</div>
-        <div class="status-t-view defcon2">Name</div>
-        <div class="status-t-view defcon3">Name</div>
+        <div class="status-t-view defcon1"><i class="fa fa-user"></i> Name</div>
+        <div class="status-t-view defcon1"><i class="fa fa-user"></i> Name</div>
+        <div class="status-t-view defcon3"><i class="fa fa-user"></i> Name</div>
+        <div class="status-t-view defcon1"><i class="fa fa-user"></i> Name</div>
+        <div class="status-t-view defcon2"><i class="fa fa-user"></i> Name</div>
+        <div class="status-t-view defcon1"><i class="fa fa-user"></i> Name</div>
+        <div class="status-t-view defcon1"><i class="fa fa-user"></i> Name</div>
+        <div class="status-t-view defcon3"><i class="fa fa-user"></i> Name</div>
+        <div class="status-t-view defcon2"><i class="fa fa-user"></i> Name</div>
+        <div class="status-t-view defcon3"><i class="fa fa-user"></i> Name</div>
       </div>
       <div class="col-sm-9">
             <!-- Nav tabs -->
@@ -192,6 +222,7 @@
   <!-- Bootstrap -->
   <script src="../bower_components/sass-bootstrap/js/tab.js"></script>
   <script src="../bower_components/sass-bootstrap/js/transition.js"></script>
+  <script src="../bower_components/sass-bootstrap/js/modal.js"></script>
 
   <script src="js/lib/underscore.js"></script>
   <script src="js/lib/backbone.js"></script>
@@ -200,5 +231,5 @@
   <script src="js/main.js"></script>
 
   <script src="js/router.js"></script>
-    </body>
+  </body>
 </html>

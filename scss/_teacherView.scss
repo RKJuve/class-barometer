@@ -1,0 +1,34 @@
+.timers-titles{
+  margin-bottom: 10px;
+}
+.status-t-view{
+  width: 100%;
+  margin: 5px;
+  padding: 5px;
+  display: block;
+  color: $color-one;
+  &.defcon1{
+    background: $color-five;
+    @include transition(all 0.3s ease-in-out);
+    &:hover{
+      background: darken($color-five, 15%);
+      font-size: 2em;
+    }
+  }
+  &.defcon2{
+    background: $color-six;
+    @include transition(all 0.3s ease-in-out);
+    &:hover{
+      background: darken($color-six, 15%);
+      font-size: 2em;
+    }
+  }
+  &.defcon3{
+    background: $color-four;
+    @include transition(all 0.3s ease-in-out);
+    &:hover{
+      background: darken($color-four, 15%);
+      font-size: 2em;
+    }
+  }
+}

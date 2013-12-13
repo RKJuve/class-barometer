@@ -9776,54 +9776,117 @@ td.visible-print {
   position: relative;
 }
 
-/* line 4, ../scss/_layout.scss */
+/* line 6, ../scss/_layout.scss */
+#creators .modal-body a {
+  color: #cf3228;
+}
+/* line 9, ../scss/_layout.scss */
+#creators .modal-body li {
+  list-style: none;
+  font-size: 2.5em;
+}
+/* line 13, ../scss/_layout.scss */
+#creators .modal-body p {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+/* line 19, ../scss/_layout.scss */
+.teacherPath, .studentPath {
+  text-align: center;
+  width: 100%;
+  background: white;
+  color: #343434;
+  border: #343434 solid 10px;
+  padding: 40px 0;
+  margin-bottom: 10px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+/* line 28, ../scss/_layout.scss */
+.teacherPath i, .studentPath i {
+  font-size: 2.5em;
+}
+/* line 31, ../scss/_layout.scss */
+.teacherPath:hover, .studentPath:hover {
+  border-color: #cf3228;
+  color: #cf3228;
+}
+
+/* line 37, ../scss/_layout.scss */
+.createClassroomForm input {
+  width: 75%;
+  margin: 0 0 10px 0;
+}
+
+/* line 42, ../scss/_layout.scss */
+.classroomList {
+  list-style: none;
+}
+/* line 44, ../scss/_layout.scss */
+.classroomList li {
+  width: 50%;
+  text-align: center;
+  padding: 20px;
+  background: #343434;
+  margin: 5px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+/* line 51, ../scss/_layout.scss */
+.classroomList li span {
+  position: relative;
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+/* line 56, ../scss/_layout.scss */
+.classroomList li span i {
+  font-size: 1.5em;
+}
+/* line 60, ../scss/_layout.scss */
+.classroomList li:hover {
+  background: #cf3228;
+  font-size: 2.5em;
+}
+
+/* line 1, ../scss/_navigation.scss */
 .navigation {
   position: relative;
   background: #343434;
   padding: 15px 0;
 }
-/* line 8, ../scss/_layout.scss */
+/* line 5, ../scss/_navigation.scss */
 .navigation h1 {
   color: white;
   margin: 0;
 }
-/* line 12, ../scss/_layout.scss */
+/* line 9, ../scss/_navigation.scss */
 .navigation .signed-in {
   color: white;
 }
 @media (min-width: 768px) {
-  /* line 12, ../scss/_layout.scss */
+  /* line 9, ../scss/_navigation.scss */
   .navigation .signed-in {
     position: absolute;
     top: 50%;
     right: 0px;
   }
 }
-/* line 19, ../scss/_layout.scss */
+/* line 16, ../scss/_navigation.scss */
 .navigation .signed-in .signed-in-name {
   color: #cf3228;
 }
 
-/* line 25, ../scss/_layout.scss */
-.student-timer {
-  text-align: right;
-  color: #cdcdcd;
-}
-
-/* line 30, ../scss/_layout.scss */
-.timers-titles {
-  margin-bottom: 10px;
-}
-
-/* line 34, ../scss/_layout.scss */
+/* line 1, ../scss/_footer.scss */
 .floting-menu {
   width: 100%;
 }
-/* line 36, ../scss/_layout.scss */
+/* line 3, ../scss/_footer.scss */
 .floting-menu h2 {
   padding: 0 0 0 20px;
 }
-/* line 39, ../scss/_layout.scss */
+/* line 6, ../scss/_footer.scss */
 .floting-menu .create-topic-input {
   float: left;
   width: 80%;
@@ -9833,7 +9896,7 @@ td.visible-print {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-/* line 47, ../scss/_layout.scss */
+/* line 14, ../scss/_footer.scss */
 .floting-menu .create-topic-btn {
   float: left;
   width: 20%;
@@ -9841,7 +9904,7 @@ td.visible-print {
   margin: 8px 0;
   border-radius: 0px;
 }
-/* line 55, ../scss/_layout.scss */
+/* line 22, ../scss/_footer.scss */
 .floting-menu .understand-buttons .def-btn {
   width: 100%;
   padding: 15px 0;
@@ -9851,122 +9914,137 @@ td.visible-print {
   color: white;
   font-size: 4em;
 }
-/* line 64, ../scss/_layout.scss */
+/* line 31, ../scss/_footer.scss */
 .floting-menu .understand-buttons .def-btn:hover {
   text-decoration: none;
 }
 @media (min-width: 768px) {
-  /* line 55, ../scss/_layout.scss */
+  /* line 22, ../scss/_footer.scss */
   .floting-menu .understand-buttons .def-btn {
     width: 33.3333%;
     float: left;
   }
 }
-/* line 72, ../scss/_layout.scss */
+/* line 39, ../scss/_footer.scss */
 .floting-menu .understand-buttons .defcon1 {
   background: #00b247;
 }
-/* line 74, ../scss/_layout.scss */
+/* line 41, ../scss/_footer.scss */
 .floting-menu .understand-buttons .defcon1:hover {
   background: #006528;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 80, ../scss/_layout.scss */
+/* line 47, ../scss/_footer.scss */
 .floting-menu .understand-buttons .defcon2 {
   background: #ffa919;
 }
-/* line 82, ../scss/_layout.scss */
+/* line 49, ../scss/_footer.scss */
 .floting-menu .understand-buttons .defcon2:hover {
   background: #cc7f00;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 88, ../scss/_layout.scss */
+/* line 55, ../scss/_footer.scss */
 .floting-menu .understand-buttons .defcon3 {
   background: #cf3228;
 }
-/* line 90, ../scss/_layout.scss */
+/* line 57, ../scss/_footer.scss */
 .floting-menu .understand-buttons .defcon3:hover {
   background: #8f231c;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 
-/* line 98, ../scss/_layout.scss */
+/* line 1, ../scss/_studentView.scss */
+.student-timer {
+  text-align: right;
+  color: #cdcdcd;
+}
+
+/* line 5, ../scss/_studentView.scss */
 .status {
   width: 40px;
   height: 40px;
   margin: 5px;
   display: inline-block;
 }
-/* line 103, ../scss/_layout.scss */
+/* line 10, ../scss/_studentView.scss */
 .status.defcon1 {
   background: #00b247;
 }
-/* line 105, ../scss/_layout.scss */
+/* line 12, ../scss/_studentView.scss */
 .status.defcon1:hover {
   background: #006528;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 110, ../scss/_layout.scss */
+/* line 17, ../scss/_studentView.scss */
 .status.defcon2 {
   background: #ffa919;
 }
-/* line 112, ../scss/_layout.scss */
+/* line 19, ../scss/_studentView.scss */
 .status.defcon2:hover {
   background: #cc7f00;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 117, ../scss/_layout.scss */
+/* line 24, ../scss/_studentView.scss */
 .status.defcon3 {
   background: #cf3228;
 }
-/* line 119, ../scss/_layout.scss */
+/* line 26, ../scss/_studentView.scss */
 .status.defcon3:hover {
   background: #8f231c;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 
-/* line 126, ../scss/_layout.scss */
+/* line 1, ../scss/_teacherView.scss */
+.timers-titles {
+  margin-bottom: 10px;
+}
+
+/* line 4, ../scss/_teacherView.scss */
 .status-t-view {
   width: 100%;
   margin: 5px;
   padding: 5px;
   display: block;
+  color: white;
 }
-/* line 131, ../scss/_layout.scss */
+/* line 10, ../scss/_teacherView.scss */
 .status-t-view.defcon1 {
   background: #00b247;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
-/* line 133, ../scss/_layout.scss */
+/* line 13, ../scss/_teacherView.scss */
 .status-t-view.defcon1:hover {
   background: #006528;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  font-size: 2em;
 }
-/* line 138, ../scss/_layout.scss */
+/* line 18, ../scss/_teacherView.scss */
 .status-t-view.defcon2 {
   background: #ffa919;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
-/* line 140, ../scss/_layout.scss */
+/* line 21, ../scss/_teacherView.scss */
 .status-t-view.defcon2:hover {
   background: #cc7f00;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  font-size: 2em;
 }
-/* line 145, ../scss/_layout.scss */
+/* line 26, ../scss/_teacherView.scss */
 .status-t-view.defcon3 {
   background: #cf3228;
-}
-/* line 147, ../scss/_layout.scss */
-.status-t-view.defcon3:hover {
-  background: #8f231c;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+}
+/* line 29, ../scss/_teacherView.scss */
+.status-t-view.defcon3:hover {
+  background: #8f231c;
+  font-size: 2em;
 }
 
 /* line 1, ../scss/_sticky-footer.scss */

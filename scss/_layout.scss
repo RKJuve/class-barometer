@@ -1,152 +1,65 @@
 .container{
   position: relative;
 }
-.navigation{
-  position: relative;
-  background: $color-two;
-  padding: 15px 0;
-  h1{
-    color: $color-one;
-    margin: 0;
-  }
-  .signed-in{
-    color: $color-one;
-    @media (min-width: $screen-sm-min) {
-      position: absolute;
-      top: 50%;
-      right: 0px;
-    }
-    .signed-in-name{
+#creators{
+  .modal-body{
+    a{
       color: $color-four;
     }
+    li{
+      list-style: none;
+      font-size: 2.5em;
+    }
+    p{
+      font-size: 2em;
+      font-weight: bold;
+    }
   }
 }
-
-.student-timer{
-  text-align: right;
-  color: lighten($color-two, 60%)
-}
-
-.timers-titles{
+.teacherPath, .studentPath{
+  text-align: center;
+  width: 100%;
+  background: $color-one;
+  color: $color-two;
+  border: $color-two solid 10px;
+  padding: 40px 0;
   margin-bottom: 10px;
+  @include transition(all 0.3s ease-in-out);
+  i{
+    font-size: 2.5em;
+  }
+  &:hover{
+    border-color: $color-four;
+    color: $color-four;
+  }
 }
-
-.floting-menu{
-  width: 100%;
-  h2{
-    padding: 0 0 0 20px;
+.createClassroomForm{
+  input{
+    width: 75%;
+    margin: 0 0 10px 0;
   }
-  .create-topic-input{
-    float: left;
-    width: 80%;
-    border-radius: 0px;
-    margin: 8px 0;
-    border: none;
-    @include box-shadow(none);
-  }
-  .create-topic-btn{
-    float: left;
-    width: 20%;
-    height: 45px;
-    margin: 8px 0;
-    border-radius: 0px;
-  }
-  .understand-buttons{
-    .def-btn{
-      width: 100%;
-      padding: 15px 0;
-      display: inline-block;
-      //list-style: none;
-      text-align: center;
-      vertical-align: middle; 
-      color: white;
-      font-size: 4em;
-      &:hover{
-        text-decoration: none;
-      }
-      @media (min-width: $screen-sm-min){
-        width: 33.3333%;
-        float: left;
+}
+.classroomList{
+  list-style: none;
+  li{
+    width: 50%;
+    text-align: center;
+    padding: 20px;
+    background: $color-two;
+    margin: 5px;
+    @include transition(all 0.3s ease-in-out);
+    span{
+      position: relative;
+      color: $color-one;
+      font-size: 1.5em;
+      font-weight: bold;
+      i{
+        font-size: 1.5em;
       }
     }
-    .defcon1{
-      background: $color-five;
-      &:hover{
-        background: darken($color-five, 15%);
-        @include transition(all 0.3s ease-in-out);
-      }
-    }
-
-    .defcon2{
-      background: $color-six;
-      &:hover{
-        background: darken($color-six, 15%);
-        @include transition(all 0.3s ease-in-out);
-      }
-    }
-
-    .defcon3{
+    &:hover{
       background: $color-four;
-      &:hover{
-        background: darken($color-four, 15%);
-        @include transition(all 0.3s ease-in-out);
-      }
-    }
-  }
-}
-
-.status{
-  width: 40px;
-  height: 40px;
-  margin: 5px;
-  display: inline-block;
-  &.defcon1{
-    background: $color-five;
-    &:hover{
-      background: darken($color-five, 15%);
-      @include transition(all 0.3s ease-in-out);
-    }
-  }
-  &.defcon2{
-    background: $color-six;
-    &:hover{
-      background: darken($color-six, 15%);
-      @include transition(all 0.3s ease-in-out);
-    }
-  }
-  &.defcon3{
-    background: $color-four;
-    &:hover{
-      background: darken($color-four, 15%);
-      @include transition(all 0.3s ease-in-out);
-    }
-  }
-}
-
-.status-t-view{
-  width: 100%;
-  margin: 5px;
-  padding: 5px;
-  display: block;
-  &.defcon1{
-    background: $color-five;
-    &:hover{
-      background: darken($color-five, 15%);
-      @include transition(all 0.3s ease-in-out);
-    }
-  }
-  &.defcon2{
-    background: $color-six;
-    &:hover{
-      background: darken($color-six, 15%);
-      @include transition(all 0.3s ease-in-out);
-    }
-  }
-  &.defcon3{
-    background: $color-four;
-    &:hover{
-      background: darken($color-four, 15%);
-      @include transition(all 0.3s ease-in-out);
+      font-size: 2.5em;
     }
   }
 }

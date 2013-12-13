@@ -1,0 +1,63 @@
+.floting-menu{
+  width: 100%;
+  h2{
+    padding: 0 0 0 20px;
+  }
+  .create-topic-input{
+    float: left;
+    width: 80%;
+    border-radius: 0px;
+    margin: 8px 0;
+    border: none;
+    @include box-shadow(none);
+  }
+  .create-topic-btn{
+    float: left;
+    width: 20%;
+    height: 45px;
+    margin: 8px 0;
+    border-radius: 0px;
+  }
+  .understand-buttons{
+    .def-btn{
+      width: 100%;
+      padding: 15px 0;
+      display: inline-block;
+      //list-style: none;
+      text-align: center;
+      vertical-align: middle; 
+      color: white;
+      font-size: 4em;
+      &:hover{
+        text-decoration: none;
+      }
+      @media (min-width: $screen-sm-min){
+        width: 33.3333%;
+        float: left;
+      }
+    }
+    .defcon1{
+      background: $color-five;
+      &:hover{
+        background: darken($color-five, 15%);
+        @include transition(all 0.3s ease-in-out);
+      }
+    }
+
+    .defcon2{
+      background: $color-six;
+      &:hover{
+        background: darken($color-six, 15%);
+        @include transition(all 0.3s ease-in-out);
+      }
+    }
+
+    .defcon3{
+      background: $color-four;
+      &:hover{
+        background: darken($color-four, 15%);
+        @include transition(all 0.3s ease-in-out);
+      }
+    }
+  }
+}
