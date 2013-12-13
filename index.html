@@ -80,6 +80,17 @@
 
     </script>
 
+    <script id="studentClassroomsView" type="text/x-handlebars-template">
+      <div class="col-md-12">
+        <h2>Join a Classroom</h2>
+      </div> 
+      <div class="col-md-12">
+        <h3><i class="fa fa-bell"></i> Current Classrooms</h3>
+        <ul id='classroomList' class="classroomList"></ul>
+      </div>
+
+    </script>
+
     <script id="classroomListItem" type="text/x-handlebars-template">
       <span data-name="{{name}}" class="classroom">
         <i class="fa fa-users"></i><br> {{name}}
