@@ -1,24 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>CF Class Barometer</title>
-    <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-  <div id="wrap">
-    <nav class="navigation" role="navigation">
-      <div class="container">
-        <h1>Class Barometer</h1>
-      </div>
-    </nav>
+  <head>
+    <title>CF Class Barometer</title>
+  <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div id="wrap">
+      <nav class="navigation" role="navigation">
+        <div class="container">
+          <h1>Class Barometer</h1>
+          <p class="signed-in">Who made this sweet APP? <span data-toggle="modal" data-target="#creators" class="signed-in-name">These Guys!</span></p>
+        </div>
+      </nav>
 
-    <div id="main">
-      <div class="container">
-        <div id="contentArea" class="row">
+      <div id="main">
+        <div class="container">
+          <div id="contentArea" class="row">
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    <!-- Modal -->
+    <div class="modal fade" id="creators" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 class="modal-title" id="myModalLabel">Brought to you by latenights & hardwork.</h3>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li><a href="http://github.com/pcostanz" target="_blank">Patrick Costanzo <i class="fa fa-github"></i></a></li>
+              <li><a href="http://github.com/tskillian" target="_blank">Tim Killian <i class="fa fa-github"></i></a></li>
+              <li><a href="http://github.com/RKJuve" target="_blank">Ryan Juve <i class="fa fa-github"></i></a></li>
+              <li><a href="http://github.com/jesserathbun" target="_blank">Jesse Rathbun <i class="fa fa-github"></i></a></li>
+            </ul>
+            <p>Thanks Code Fellows for bringing us all together!</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
     <script id="selectYourPath" type="text/x-handlebars-template">
       <div class="col-md-12">
@@ -198,6 +222,7 @@
   <!-- Bootstrap -->
   <script src="../bower_components/sass-bootstrap/js/tab.js"></script>
   <script src="../bower_components/sass-bootstrap/js/transition.js"></script>
+  <script src="../bower_components/sass-bootstrap/js/modal.js"></script>
 
   <script src="js/lib/underscore.js"></script>
   <script src="js/lib/backbone.js"></script>
@@ -206,5 +231,5 @@
   <script src="js/main.js"></script>
 
   <script src="js/router.js"></script>
-    </body>
+  </body>
 </html>

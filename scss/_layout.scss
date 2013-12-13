@@ -1,6 +1,21 @@
 .container{
   position: relative;
 }
+#creators{
+  .modal-body{
+    a{
+      color: $color-four;
+    }
+    li{
+      list-style: none;
+      font-size: 2.5em;
+    }
+    p{
+      font-size: 2em;
+      font-weight: bold;
+    }
+  }
+}
 .teacherPath, .studentPath{
   text-align: center;
   width: 100%;

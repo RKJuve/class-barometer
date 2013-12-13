@@ -9776,7 +9776,22 @@ td.visible-print {
   position: relative;
 }
 
-/* line 4, ../scss/_layout.scss */
+/* line 6, ../scss/_layout.scss */
+#creators .modal-body a {
+  color: #cf3228;
+}
+/* line 9, ../scss/_layout.scss */
+#creators .modal-body li {
+  list-style: none;
+  font-size: 2.5em;
+}
+/* line 13, ../scss/_layout.scss */
+#creators .modal-body p {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+/* line 19, ../scss/_layout.scss */
 .teacherPath, .studentPath {
   text-align: center;
   width: 100%;
@@ -9788,27 +9803,27 @@ td.visible-print {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 13, ../scss/_layout.scss */
+/* line 28, ../scss/_layout.scss */
 .teacherPath i, .studentPath i {
   font-size: 2.5em;
 }
-/* line 16, ../scss/_layout.scss */
+/* line 31, ../scss/_layout.scss */
 .teacherPath:hover, .studentPath:hover {
   border-color: #cf3228;
   color: #cf3228;
 }
 
-/* line 22, ../scss/_layout.scss */
+/* line 37, ../scss/_layout.scss */
 .createClassroomForm input {
   width: 75%;
   margin: 0 0 10px 0;
 }
 
-/* line 27, ../scss/_layout.scss */
+/* line 42, ../scss/_layout.scss */
 .classroomList {
   list-style: none;
 }
-/* line 29, ../scss/_layout.scss */
+/* line 44, ../scss/_layout.scss */
 .classroomList li {
   width: 50%;
   text-align: center;
@@ -9818,18 +9833,18 @@ td.visible-print {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 36, ../scss/_layout.scss */
+/* line 51, ../scss/_layout.scss */
 .classroomList li span {
   position: relative;
   color: white;
   font-size: 1.5em;
   font-weight: bold;
 }
-/* line 41, ../scss/_layout.scss */
+/* line 56, ../scss/_layout.scss */
 .classroomList li span i {
   font-size: 1.5em;
 }
-/* line 45, ../scss/_layout.scss */
+/* line 60, ../scss/_layout.scss */
 .classroomList li:hover {
   background: #cf3228;
   font-size: 2.5em;
