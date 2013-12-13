@@ -35,6 +35,16 @@ var Classrooms = {};
 //  }
 var nameRegister = {};
 
+  // The server tracks the state of all teacher resources
+  // "schema":
+  // resources:
+  //   classroomID: {
+  //       topic: 'current topic',
+  //       links: ['array of links'],
+  //       etc: 'whatever else'
+  //   };
+var resources = {};
+
 // functions that modify the Classrooms and nameRegister objects
 
 // function addTeacher(classroomId, clientId) {
@@ -43,6 +53,12 @@ var nameRegister = {};
 function createClassroom(classroomId) {
     Classrooms[classroomId] = {};
     nameRegister[classroomId] = {};
+    resources[classroomId] = {};
+}
+
+// helper function to add topic to resources object
+function updateResourcesTopic(classroomId, topic) {
+    resources[classroomId].topic = topic;
 }
 
 function removeClassroom(classroomId) {
@@ -117,10 +133,7 @@ io.sockets.on('connection', function(client) {
     //after join, emit list of available classrooms
     client.emit('classroomsUpdate', _.keys(Classrooms));
 
-    client.on('topicUpdate', function(data) {
-        console.log(data);
-        io.sockets.emit('updatedTopic', data);
-    });
+
 
     // This is a response to a poll request for classroom information from the teacher route
     client.on('poll', function() {
@@ -141,10 +154,19 @@ io.sockets.on('connection', function(client) {
         client.emit('nameUpdate', nameRegister[classroomId]);
         console.log("teacher joined classroom");
 
+
+        client.on('topicChange', function(data) {
+            console.log(data);
+            updateResourcesTopic(classroomId, data);
+            io.sockets.in(classroomId).emit('topicUpdate', data);
+        });
+
+
         client.on('needNameUpdate2', function(){
             console.log("nameupdate needed2");
             client.emit('nameUpdate', nameRegister[classroomId]);
-        })
+        });
+
 
         io.sockets.on('studentJoinClassroom', function() {
 
