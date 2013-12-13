@@ -16,7 +16,15 @@ var path = require("path"),
 // }
 var Classrooms = {};
 
-
+//  the server holds student names associated with websockets in this object
+//  "schema":
+//  Resources: {
+//      classroomId: {
+//          topic: "",
+//          resourcesPage: ['', '', ''],
+//          timers: []
+//      }
+//  }
 
 //  the server holds student names associated with websockets in this object
 //  "schema":
@@ -133,6 +141,10 @@ io.sockets.on('connection', function(client) {
         client.emit('nameUpdate', nameRegister[classroomId]);
         console.log("teacher joined classroom");
 
+        client.on('needNameUpdate2', function(){
+            console.log("nameupdate needed2");
+            client.emit('nameUpdate', nameRegister[classroomId]);
+        })
 
         io.sockets.on('studentJoinClassroom', function() {
 
@@ -142,11 +154,18 @@ io.sockets.on('connection', function(client) {
 
     // student connection
     client.on('studentJoinClassroom', function(classroomId, studentName) {
+        //client joins room
         client.join(classroomId);
+        //client fed to addStudent function
         addStudent(classroomId, client.id, studentName);
-        io.sockets. in (classroomId).emit("update", Classrooms[classroomId]);
         console.log(Classrooms);
         console.log(nameRegister);
+        // update room about student
+        io.sockets. in (classroomId).emit("update", Classrooms[classroomId]);
+        // update room that name update is needed
+        console.log("nameupdate needed1");
+        io.sockets.in(classroomId).emit("needNameUpdate1");
+
         client.on('setStatus', function(status) {
             setStatus(classroomId, client.id, status);
             io.sockets. in (classroomId).emit("update", Classrooms[classroomId]);
