@@ -14,26 +14,36 @@
 
     <div id="main">
       <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2 class="page-title">Title</h2>
-          </div> 
-
-          <div id="contentArea"></div>
+        <div id="contentArea" class="row">
         </div>
       </div>
     </div>
   </div>
 
+    <script id="selectYourPath" type="text/x-handlebars-template">
+      <div class="col-md-12">
+        <h2>Are you here to Teach or Learn?</h2>
+      </div> 
+      <div class="col-md-12">
+        <h3>Start Creating Classes</h3>
+        <button type="button" class="btn btn-primary teacher">Teacher</button>
+        <h3>Find a class to join</h3>
+        <button type="button" class="btn btn-primary student">Student</button>
+      </div>
+    </script>
+
     <script id="teacherCreateClassroomParent" type="text/x-handlebars-template">
       <div class="col-md-12">
+        <h2>Create or Join a Class</h2>
+      </div> 
+      <div class="col-md-12">
         <form id="createClassroomForm">
-        <input name="classroomName" type="text" class="form-control"></input>
+        <input name="classroomName" type="text" class="form-control" placeholder="What would you like to call your class?"></input>
         <button type="submit" id="createClassroom" class="btn btn-primary teacher">Create Classroom</button>
         </form>
       </div>
-
       <div class="col-md-12">
+        <h3>Current Classes</h3>
         <ul id='classroomList'></ul>
       </div>
 
@@ -44,6 +54,9 @@
     </script>
 
     <script id="teacherClassroomView" type="text/x-handlebars-template">
+      <div class="col-md-12">
+        <h2>Welcome to {{name}}</h2>
+      </div>
       <div class="col-sm-3">
         <h2>Whos Gettin it?</h2>
         <div class="status-t-view defcon1">Name</div>

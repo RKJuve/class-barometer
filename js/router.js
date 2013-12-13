@@ -1,7 +1,7 @@
 App.Router = Backbone.Router.extend({
 
   routes: {
-    "": "index",
+    "": "selectUser",
     "teacher": "teacher",
     "teacher/:name": "joinClassroom",
     "student": "student"
@@ -18,6 +18,11 @@ App.Router = Backbone.Router.extend({
   index: function() {
     console.log("index route fired");
 
+  },
+
+  selectUser: function() {
+    console.log("Select User Route Hit!");
+    App.selectUserPathView = new App.SelectUserPathView();
   },
 
   teacher: function() {
