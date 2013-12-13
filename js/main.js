@@ -2,9 +2,9 @@
 var App = window.App || {};
 
 // moted to #clientStatusBlock
-$.get('statusBlock.html', function(res) {
-	App.studentTemplate = res;
-});
+// $.get('statusBlock.html', function(res) {
+// 	App.studentTemplate = res;
+// });
 
 // moved to #classroomListItem
 // $.get('classroomList.html', function(res) {
