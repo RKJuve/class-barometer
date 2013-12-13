@@ -3,6 +3,7 @@ App.Router = Backbone.Router.extend({
   routes: {
     "": "index",
     "teacher": "teacher",
+    "teacher/:name": "joinClassroom",
     "student": "student"
   },
 
@@ -47,7 +48,7 @@ App.Router = Backbone.Router.extend({
 
     });
 
-    App.socket.on('nameUpdate', function(data){
+    App.socket.on('nameUpdate', function(data) {
       //update each model by id, with name
     });
   },
