@@ -17,7 +17,7 @@ module.exports = function(grunt) {
           javascriptsDir: 'js',
           fontsDir: 'fonts',
           // outputStyle can be: nested, expanded, compact, compressed
-          outputStyle: 'expanded',
+          outputStyle: 'compressed',
           relativeAssets: true
         }
       },
