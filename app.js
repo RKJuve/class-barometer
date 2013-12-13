@@ -72,12 +72,18 @@ function removeClient(classroomId, clientId) {
 }
 
 // ExpressJS Server Definition
-app.set("views", path.join(__dirname, "templates/server"))
-    .set("view engine", "hbs")
-    .use(express.static(path.join(__dirname, "templates/client")))
-    .use(express.static(path.join(__dirname, "js")))
-    .use(express.static(path.join(__dirname, "css")))
-    .use(express.static(path.join(__dirname, "bower_components")));
+// app.set("views", path.join(__dirname, "templates/server"))
+//     .set("view engine", "hbs")
+//     .use(express.static(path.join(__dirname, "templates/client")))
+//     .use(express.static(path.join(__dirname, "js")))
+//     .use(express.static(path.join(__dirname, "css")))
+//     .use(express.static(path.join(__dirname, "bower_components")));
+
+app.use(express.static(__dirname,
+                path.join(__dirname, "bower_components"),
+                path.join(__dirname, "js"),
+                path.join(__dirname, "css")));
+
 
 app.get("/", function(req, res) {
     console.log("newindex hit");
@@ -102,6 +108,11 @@ io = io.listen(server);
 io.sockets.on('connection', function(client) {
     //after join, emit list of available classrooms
     client.emit('classroomsUpdate', _.keys(Classrooms));
+    
+    // This is a response to a poll request for classroom information from the teacher route
+    client.on('poll', function() {
+        client.emit('classroomsUpdate', _.keys(Classrooms));
+    });
 
     //create classroom currently before joining as teacher, potential security hole
     client.on('createClassroom', function(data) {
