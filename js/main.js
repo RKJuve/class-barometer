@@ -33,7 +33,7 @@ App.SelectUserPathView = Backbone.View.extend({
 	},
 
 	studentPath: function() {
-		App.router.navigate("student" + data, {
+		App.router.navigate("student", {
 			trigger: true
 		});
 	},
@@ -106,6 +106,43 @@ App.TeacherCreateClassroomParentView = Backbone.View.extend({
 		console.log("render teach render!!!");
 		this.$el.empty();
 		var source = $("#teacherCreateClassroomParent").html();
+		var template = Handlebars.compile(source);
+		var html = template();
+		this.$el.html(html);
+
+		App.classroomsView = new App.ClassroomsView({
+			collection: App.classrooms
+		});
+	}
+
+});
+
+App.StudentClassroomsView = Backbone.View.extend({
+	el: "#contentArea",
+
+	events: {
+		"click .classroomList li": "joinClassroom"
+	},
+
+	initialize: function() {
+		console.log("TeacherCreateClassroomParentView initialized");
+		this.render();
+		var collection = this.collection;
+	},
+
+	joinClassroom: function(e) {
+		var data = $(e.target).children().data("name");
+		App.socket.emit('teacherJoinClassroom', data);
+
+		App.router.navigate("teacher/" + data, {
+			trigger: true
+		});
+	},
+
+	render: function() {
+		console.log("render teach render!!!");
+		this.$el.empty();
+		var source = $("#studentClassroomsView").html();
 		var template = Handlebars.compile(source);
 		var html = template();
 		this.$el.html(html);

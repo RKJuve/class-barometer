@@ -95,6 +95,20 @@ App.Router = Backbone.Router.extend({
 
   student: function() {
     console.log("student route fired");
+    App.studentClassroomsView = new App.StudentClassroomsView({
+      collection: App.classrooms
+    });
+
+    App.socket.on('classroomsUpdate', function(data) {
+      var temp = [];
+      _.each(data, function(elem, index, list) {
+        temp.push({
+          name: elem
+        });
+      });
+
+      App.classrooms.set(temp);
+    });
   }
 });
 
