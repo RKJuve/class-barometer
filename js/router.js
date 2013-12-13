@@ -53,9 +53,21 @@ App.Router = Backbone.Router.extend({
 
     });
 
-    App.socket.on('nameUpdate', function(data) {
-      //update each model by id, with name
+    App.socket.on('nameUpdate', function(data){
+       var temp = [];
+       _.each(data, function(elem, index, list) {
+         temp.push({id: index, name: elem});
+       });
+ 
+       App.students.set(temp);
+ 
+       console.log(App.students);
     });
+    
+    App.socket.on('needNameUpdate1', function(data){
+      socket.emit('needNameUpdate2');
+    });
+    
   },
 
   joinClassroom: function() {
