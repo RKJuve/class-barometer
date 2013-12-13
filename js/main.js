@@ -28,8 +28,8 @@ App.TeacherCreateClassroomParentView = Backbone.View.extend({
 	el: "#contentArea",
 
 	events: {
-		"click #createClassroom" : "createClassroom",
-		"submit #createClassroomForm" : "createClassroom",
+		"click #createClassroom": "createClassroom",
+		"submit #createClassroomForm": "createClassroom",
 		"click .classroom": "joinClassroom"
 	},
 
@@ -39,43 +39,49 @@ App.TeacherCreateClassroomParentView = Backbone.View.extend({
 		var collection = this.collection;
 	},
 
-	joinClassroom: function() {
-		App.socket.emit('teacherJoinClassroom', $(this).attr("data"));
+	joinClassroom: function(e) {
+		var data = $(e.target).data("name");
+		App.socket.emit('teacherJoinClassroom', data);
+
+		App.router.navigate("teacher/" + data, {
+			trigger: true
+		});
 	},
 
 	createClassroom: function(e) {
-      e.preventDefault();
+		e.preventDefault();
 
-      //--------
-      // This section trims whitespace before or after the
-      // classroom name, prevents submissions from being blank
-      // and then clears the input field after submission.
-      //--------
+		//--------
+		// This section trims whitespace before or after the
+		// classroom name, prevents submissions from being blank
+		// and then clears the input field after submission.
+		//--------
 
-      var classroomName = $("[name='classroomName']");
-      var trimmedName = classroomName.val().replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-      if (trimmedName.length === 0) {
-        return;
-      }
-      App.socket.emit('createClassroom', trimmedName);
-      classroomName.val("");
+		var classroomName = $("[name='classroomName']");
+		var trimmedName = classroomName.val().replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+		if (trimmedName.length === 0) {
+			return;
+		}
+		App.socket.emit('createClassroom', trimmedName);
+		classroomName.val("");
 	},
 
-	render: function(){
+	render: function() {
+		console.log("render teach render!!!");
 		this.$el.empty();
 		var source = $("#teacherCreateClassroomParent").html();
 		var template = Handlebars.compile(source);
 		var html = template();
 		this.$el.html(html);
 
-        App.classroomsView = new App.ClassroomsView({
-          collection: App.classrooms
-        });
+		App.classroomsView = new App.ClassroomsView({
+			collection: App.classrooms
+		});
 	}
 
 });
 
-// Classrooms Collection View
+// Classrooms Collection View (creates the list of classrooms)
 App.ClassroomsView = Backbone.View.extend({
 	el: "#classroomList",
 	initialize: function() {
@@ -94,8 +100,6 @@ App.ClassroomsView = Backbone.View.extend({
 App.ClassroomView = Backbone.View.extend({
 	tagName: "li",
 
-	template: Handlebars.compile('<span data="{{name}}" class="classroom">{{name}}</span>'),
-
 	initialize: function() {
 		this.render();
 	},
@@ -107,9 +111,9 @@ App.ClassroomView = Backbone.View.extend({
 	// },
 	render: function() {
 
-		// var source = $("#classroomListItem").html();
-		// var template = Handlebars.compile(source);
-		var html = this.template(this.model.toJSON());
+		var source = $("#classroomListItem").html();
+		var template = Handlebars.compile(source);
+		var html = template(this.model.toJSON());
 		this.$el.html(html);
 
 		// var template = Handlebars.compile(App.classroomTemplate);
@@ -117,7 +121,34 @@ App.ClassroomView = Backbone.View.extend({
 	}
 });
 
+App.TeacherClassroomParentView = Backbone.View.extend({
+	el: "#contentArea",
 
+	initialize: function() {
+		console.log("TeacherClassroomParentView initialized");
+		this.render();
+	},
+
+	startBootstrapTabs: function() {
+		$('.teach-tabs a').click(function(e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
+	},
+
+	render: function() {
+		$("#contentArea").empty();
+		var source = $("#teacherClassroomView").html();
+		var template = Handlebars.compile(source);
+		// Probably will need the toJSON
+		// var html = template(this.model.toJSON());
+		var html = template();
+		this.$el.html(html);
+		// You need this to initalize the bootstrap tabs
+		this.startBootstrapTabs();
+	}
+
+});
 
 //Backbone Student model
 App.Student = Backbone.Model.extend({

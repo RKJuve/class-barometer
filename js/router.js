@@ -3,6 +3,7 @@ App.Router = Backbone.Router.extend({
   routes: {
     "": "index",
     "teacher": "teacher",
+    "teacher/:name": "joinClassroom",
     "student": "student"
   },
 
@@ -47,8 +48,31 @@ App.Router = Backbone.Router.extend({
 
     });
 
-    App.socket.on('nameUpdate', function(data){
+    App.socket.on('nameUpdate', function(data) {
       //update each model by id, with name
+    });
+  },
+
+  joinClassroom: function() {
+    console.log("joinClassroom Route fired");
+
+    // this needs to poll to update current info within the classroom
+    //App.socket.emit("poll");
+
+    // Passes current classrooms students and data
+    // App.socket.on('studentsUpdate', function(data) {
+    //   var temp = [];
+    //   _.each(data, function(elem, index, list) {
+    //     temp.push({
+    //       name: elem
+    //     });
+    //   });
+
+    //   App.classrooms.set(temp);
+
+    App.teacherClassroomParentView = new App.TeacherClassroomParentView({
+      // need to pass in collection for students
+      // collectionL App.students
     });
   },
 
