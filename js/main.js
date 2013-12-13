@@ -2,14 +2,32 @@
 var App = window.App || {};
 
 // moted to #clientStatusBlock
-$.get('statusBlock.html', function(res) {
-	App.studentTemplate = res;
-});
+// $.get('statusBlock.html', function(res) {
+// 	App.studentTemplate = res;
+// });
 
 // moved to #classroomListItem
 // $.get('classroomList.html', function(res) {
 // 	App.classroomTemplate = res;
 // });
+
+// Backbone Select User View
+App.SelectUserPathView = Backbone.View.extend({
+	el: "#contentArea",
+
+	initialize: function() {
+		console.log("SelectUserPathView initialized");
+		this.render();
+	},
+
+	render: function() {
+		$("#contentArea").empty();
+		var source = $("#selectYourPath").html();
+		var template = Handlebars.compile(source);
+		var html = template();
+		this.$el.html(html);
+	}
+});
 
 //Backbone Classroom model
 App.Classroom = Backbone.Model.extend({
