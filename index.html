@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>CF Class Barometer</title>
+    <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+  <div id="wrap">
+    <nav class="navigation" role="navigation">
+      <div class="container">
+        <h1>Class Barometer</h1>
+      </div>
+    </nav>
+
+    <div id="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="page-title">Title</h2>
+          </div> 
+
+          <div id="contentArea"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script id="teacherCreateClassroomParent" type="text/x-handlebars-template">
+      <div class="col-md-12">
+        <form id="createClassroomForm">
+        <input name="classroomName" type="text" class="form-control"></input>
+        <button type="submit" id="createClassroom" class="btn btn-primary teacher">Create Classroom</button>
+        </form>
+      </div>
+
+      <div class="col-md-12">
+        <ul id='classroomList'></ul>
+      </div>
+
+    </script>
+
+    <script id="classroomListItem" type="text/x-handlebars-template">
+      <span data="{{name}}" class="classroom">Name: {{name}}</span>
+    </script>
+
+         <script>
+    // // create Students collection instance
+    // App.students = new App.Students();
+    // //create Classrooms collection instance
+    // App.classrooms = new App.Classrooms();
+
+    // // start socket connection
+    // var socket = io.connect(window.location.origin);
+
+    // // socket behavior for classroomsUpdate
+    // socket.on('classroomsUpdate', function(data){
+    //     var temp = [];
+    //   _.each(data, function(elem, index, list) {
+    //     temp.push({ name: elem });
+    //   });
+
+    //     App.classrooms.set(temp);
+
+    //   // Need to instantiate TeacherCreateClassroomParentView here
+
+    //   if (App.teacherCreateClassroomParentView) {
+    //     // does this need to happen here? can it be part of the render?
+    //     App.teacherCreateClassroomParentView.el.innerHTML = '';
+    //     App.teacherCreateClassroomParentView.render();
+    //   } else {
+    //     App.teacherCreateClassroomParentView = new App.TeacherCreateClassroomParentView({
+    //       collection: App.classrooms
+    //     }); 
+    //   }
+
+    //     // if (App.classroomsView) {
+    //  //    App.classroomsView.el.innerHTML = '';
+    //  //    App.classroomsView.render();
+    //  //  } else {
+    //  //    App.classroomsView = new App.ClassroomsView({
+    //  //      collection: App.classrooms
+    //  //    }); 
+    //     // }
+
+    //     // $(".classroom").on("click", function(e){
+    //  //  e.preventDefault();
+    //  //  socket.emit('teacherJoinClassroom', $(this).attr("data"));
+
+    //  //  });
+
+    // });
+
+    // // socket update behavior
+    // // TODO: This probably needs to not be in the teacher file
+    // // socket.on("update", function(data){
+    // //   var temp = [];
+    // //   _.each(data, function(elem, index, list) {
+    // //     temp.push({ id: index, status: elem.status, comment: elem.comment });
+    // //   });
+
+    // //   App.students.reset(temp);
+
+    // //   if (App.studentsView) {
+    // //     App.studentsView.el.innerHTML = '';
+    // //     App.studentsView.render();
+    // //   } else {
+    // //     App.studentsView = new App.StudentsView({
+    // //       collection: App.students
+    // //     }); 
+    // //   }
+    // // });
+
+    // socket.on('nameUpdate', function(data){
+    //     //update each model by id, with name
+    // });
+
+  </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="js/lib/underscore.js"></script>
+  <script src="js/lib/backbone.js"></script>
+  <script src="js/lib/handlebars.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/main.js"></script>
+
+  <script src="js/router.js"></script>
+    </body>
+</html>

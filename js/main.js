@@ -34,12 +34,13 @@ App.TeacherCreateClassroomParentView = Backbone.View.extend({
 	},
 
 	initialize: function() {
+		console.log("TeacherCreateClassroomParentView initialized");
 		this.render();
 		var collection = this.collection;
 	},
 
 	joinClassroom: function() {
-		socket.emit('teacherJoinClassroom', $(this).attr("data"));
+		App.socket.emit('teacherJoinClassroom', $(this).attr("data"));
 	},
 
 	createClassroom: function(e) {
@@ -56,11 +57,12 @@ App.TeacherCreateClassroomParentView = Backbone.View.extend({
       if (trimmedName.length === 0) {
         return;
       }
-      socket.emit('createClassroom', trimmedName);
+      App.socket.emit('createClassroom', trimmedName);
       classroomName.val("");
 	},
 
 	render: function(){
+		this.$el.empty();
 		var source = $("#teacherCreateClassroomParent").html();
 		var template = Handlebars.compile(source);
 		var html = template();
