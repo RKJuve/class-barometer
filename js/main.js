@@ -48,7 +48,7 @@ App.TeacherCreateClassroomParentView = Backbone.View.extend({
 	events: {
 		"click #createClassroom": "createClassroom",
 		"submit #createClassroomForm": "createClassroom",
-		"click .classroom": "joinClassroom"
+		"click .classroomList li": "joinClassroom"
 	},
 
 	initialize: function() {

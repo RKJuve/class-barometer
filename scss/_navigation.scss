@@ -1,0 +1,20 @@
+.navigation{
+  position: relative;
+  background: $color-two;
+  padding: 15px 0;
+  h1{
+    color: $color-one;
+    margin: 0;
+  }
+  .signed-in{
+    color: $color-one;
+    @media (min-width: $screen-sm-min) {
+      position: absolute;
+      top: 50%;
+      right: 0px;
+    }
+    .signed-in-name{
+      color: $color-four;
+    }
+  }
+}
