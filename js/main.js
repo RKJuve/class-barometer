@@ -134,13 +134,13 @@ App.StudentClassroomsView = Backbone.View.extend({
 		var data = $(e.target).children().data("name");
 		App.socket.emit('teacherJoinClassroom', data);
 
-		App.router.navigate("teacher/" + data, {
+		App.router.navigate("student/" + data, {
 			trigger: true
 		});
 	},
 
 	render: function() {
-		console.log("render teach render!!!");
+		console.log("render student render!!!");
 		this.$el.empty();
 		var source = $("#studentClassroomsView").html();
 		var template = Handlebars.compile(source);

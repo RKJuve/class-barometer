@@ -4,6 +4,7 @@ App.Router = Backbone.Router.extend({
     "": "selectUser",
     "teacher": "teacher",
     "teacher/:name": "joinClassroom",
+    "student/:name": "studentJoinClassroom",
     "student": "student"
   },
 
@@ -32,6 +33,7 @@ App.Router = Backbone.Router.extend({
 
     App.socket.on('classroomsUpdate', function(data) {
       var temp = [];
+      console.log('text');
       _.each(data, function(elem, index, list) {
         temp.push({
           name: elem
@@ -95,9 +97,8 @@ App.Router = Backbone.Router.extend({
 
   student: function() {
     console.log("student route fired");
-    App.studentClassroomsView = new App.StudentClassroomsView({
-      collection: App.classrooms
-    });
+
+    App.socket.emit("poll");
 
     App.socket.on('classroomsUpdate', function(data) {
       var temp = [];
@@ -106,9 +107,21 @@ App.Router = Backbone.Router.extend({
           name: elem
         });
       });
+      
+    App.classrooms.set(temp);
 
-      App.classrooms.set(temp);
+    App.studentClassroomsView = new App.StudentClassroomsView({
+      collection: App.classrooms
     });
+
+
+
+      
+    });
+  },
+
+  studentJoinClassroom: function() {
+    console.log("studentJoinClassroom route fired");
   }
 });
 
