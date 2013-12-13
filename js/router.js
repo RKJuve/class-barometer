@@ -53,6 +53,29 @@ App.Router = Backbone.Router.extend({
     });
   },
 
+  joinClassroom: function() {
+    console.log("joinClassroom Route fired");
+
+    // this needs to poll to update current info within the classroom
+    App.socket.emit("poll");
+
+    // Passes current classrooms students and data
+    // App.socket.on('studentsUpdate', function(data) {
+    //   var temp = [];
+    //   _.each(data, function(elem, index, list) {
+    //     temp.push({
+    //       name: elem
+    //     });
+    //   });
+
+    //   App.classrooms.set(temp);
+
+    App.teacherClassroomParentView = new App.TeacherClassroomParentView({
+      // need to pass in collection for students
+      // collectionL App.students
+    });
+  },
+
   student: function() {
     console.log("student route fired");
   }

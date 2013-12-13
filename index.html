@@ -40,7 +40,66 @@
     </script>
 
     <script id="classroomListItem" type="text/x-handlebars-template">
-      <a href="/{{name}}"><span data-name="{{name}}" class="classroom">{{name}}</span></a>
+      <span data-name="{{name}}" class="classroom">{{name}}</span>
+    </script>
+
+    <script id="teacherClassroomView" type="text/x-handlebars-template">
+      <div class="col-sm-3">
+        <h2>Whos Gettin it?</h2>
+        <div class="status-t-view defcon1">Name</div>
+        <div class="status-t-view defcon1">Name</div>
+        <div class="status-t-view defcon3">Name</div>
+        <div class="status-t-view defcon1">Name</div>
+        <div class="status-t-view defcon2">Name</div>
+        <div class="status-t-view defcon1">Name</div>
+        <div class="status-t-view defcon1">Name</div>
+        <div class="status-t-view defcon3">Name</div>
+        <div class="status-t-view defcon2">Name</div>
+        <div class="status-t-view defcon3">Name</div>
+      </div>
+      <div class="col-sm-9">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs teach-tabs">
+              <li><a href="#metrics" data-toggle="tab">Metrics</a></li>
+              <li><a href="#chat" data-toggle="tab">Chat</a></li>
+              <li><a href="#timers" data-toggle="tab">Timers</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div class="tab-pane fade in active" id="metrics">
+                <h2>Cool graphs and charts</h2>
+              </div>
+              <div class="tab-pane fade" id="chat">
+                <h2>The Chat</h2>
+              </div>
+              <div class="tab-pane fade" id="timers">
+                <h2>Timers</h2>
+                <div class="row timers-titles">
+                  <div class="col-md-7">
+                    <h3>Count Down</h3>
+                  </div>
+                  <div class="col-md-5">
+                    <h3><i class="fa fa-clock-o"></i> 00h 00m 00s</h3>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="00h">
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="00m">
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="00s">
+                  </div>
+                  <div class="col-md-3">
+                    <button type="button" class="btn btn-primary">Start</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
     </script>
 
          <script>
@@ -115,7 +174,12 @@
     // });
 
   </script>
+  <!-- jQuery -->
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="../bower_components/sass-bootstrap/js/tab.js"></script>
+  <script src="../bower_components/sass-bootstrap/js/transition.js"></script>
+
   <script src="js/lib/underscore.js"></script>
   <script src="js/lib/backbone.js"></script>
   <script src="js/lib/handlebars.js"></script>

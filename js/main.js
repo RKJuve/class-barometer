@@ -80,7 +80,7 @@ App.TeacherCreateClassroomParentView = Backbone.View.extend({
 
 });
 
-// Classrooms Collection View
+// Classrooms Collection View (creates the list of classrooms)
 App.ClassroomsView = Backbone.View.extend({
 	el: "#classroomList",
 	initialize: function() {
@@ -99,8 +99,6 @@ App.ClassroomsView = Backbone.View.extend({
 App.ClassroomView = Backbone.View.extend({
 	tagName: "li",
 
-	template: Handlebars.compile('<span data-name="{{name}}" class="classroom">{{name}}</span>'),
-
 	initialize: function() {
 		this.render();
 	},
@@ -112,9 +110,9 @@ App.ClassroomView = Backbone.View.extend({
 	// },
 	render: function() {
 
-		// var source = $("#classroomListItem").html();
-		// var template = Handlebars.compile(source);
-		var html = this.template(this.model.toJSON());
+		var source = $("#classroomListItem").html();
+		var template = Handlebars.compile(source);
+		var html = template(this.model.toJSON());
 		this.$el.html(html);
 
 		// var template = Handlebars.compile(App.classroomTemplate);
@@ -122,7 +120,34 @@ App.ClassroomView = Backbone.View.extend({
 	}
 });
 
+App.TeacherClassroomParentView = Backbone.View.extend({
+	el: "#contentArea",
 
+	initialize: function() {
+		console.log("TeacherClassroomParentView initialized");
+		this.render();
+
+	},
+
+	startBootstrapTabs: function() {
+		$('.teach-tabs a').click(function(e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
+	},
+
+	render: function() {
+		var source = $("#teacherClassroomView").html();
+		var template = Handlebars.compile(source);
+		// Probably will need the toJSON
+		// var html = template(this.model.toJSON());
+		var html = template();
+		this.$el.html(html);
+		// You need this to initalize the bootstrap tabs
+		this.startBootstrapTabs();
+	}
+
+});
 
 //Backbone Student model
 App.Student = Backbone.Model.extend({
