@@ -189,7 +189,7 @@ App.TeacherClassroomParentView = Backbone.View.extend({
 		//Assumes there is a resources object within App
 		//The jqeury selector will need to be updated based on subview as well
 		App.resources.status = $('#updateStatus').val();
-		socket.emit('topicUpdate', App.resources.status);
+		socket.emit('topicChange', App.resources.status);
 	}
 
 });
@@ -220,6 +220,12 @@ App.StudentsView = Backbone.View.extend({
 			});
 			this.$el.append(App.studentView.el);
 		}, this);
+	},
+	topicUpdate: function() {
+		socket.on('topicUpdate', function(data) {
+			//Change jquery selector to whatever is applicable when topic view is finalized
+			$('#topic').val(data);
+		});
 	}
 });
 // Student Model View
