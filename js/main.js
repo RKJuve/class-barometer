@@ -75,7 +75,7 @@ App.TeacherCreateClassroomParentView = Backbone.View.extend({
 	},
 
 	joinClassroom: function(e) {
-		var data = $(e.target).data("name");
+		var data = $(e.target).children().data("name");
 		App.socket.emit('teacherJoinClassroom', data);
 
 		App.router.navigate("teacher/" + data, {
