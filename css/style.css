@@ -9777,7 +9777,7 @@ td.visible-print {
 }
 
 /* line 4, ../scss/_layout.scss */
-.choosePath {
+.teacherPath, .studentPath {
   text-align: center;
   width: 100%;
   background: white;
@@ -9789,11 +9789,11 @@ td.visible-print {
   transition: all 0.3s ease-in-out;
 }
 /* line 13, ../scss/_layout.scss */
-.choosePath i {
+.teacherPath i, .studentPath i {
   font-size: 2.5em;
 }
 /* line 16, ../scss/_layout.scss */
-.choosePath:hover {
+.teacherPath:hover, .studentPath:hover {
   border-color: #cf3228;
   color: #cf3228;
 }

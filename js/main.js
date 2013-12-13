@@ -15,9 +15,26 @@ var App = window.App || {};
 App.SelectUserPathView = Backbone.View.extend({
 	el: "#contentArea",
 
+	events: {
+		"click .teacherPath": "teacherPath",
+		"click .studentPath": "studentPath"
+	},
+
 	initialize: function() {
 		console.log("SelectUserPathView initialized");
 		this.render();
+	},
+
+	teacherPath: function() {
+		App.router.navigate("teacher", {
+			trigger: true
+		});
+	},
+
+	studentPath: function() {
+		App.router.navigate("student" + data, {
+			trigger: true
+		});
 	},
 
 	render: function() {
