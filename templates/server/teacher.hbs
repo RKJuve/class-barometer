@@ -51,6 +51,10 @@
 
     </script>
 
+    <script id="classroomListItem" type="text/x-handlebars-template">
+      <span data="{{name}}" class="classroom">Name: {{name}}</span>
+    </script>
+
 		 <script>
     // create Students collection instance
     App.students = new App.Students();
@@ -121,7 +125,7 @@
     socket.on('nameUpdate', function(data){
     	//update each model by id, with name
     });
-    
+
   </script>
 	</body>
 </html>

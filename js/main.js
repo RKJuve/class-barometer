@@ -1,13 +1,15 @@
 // global app namespace
 var App = window.App || {};
 
-// get templates
+// moted to #clientStatusBlock
 $.get('statusBlock.html', function(res) {
 	App.studentTemplate = res;
 });
-$.get('classroomList.html', function(res) {
-	App.classroomTemplate = res;
-});
+
+// moved to #classroomListItem
+// $.get('classroomList.html', function(res) {
+// 	App.classroomTemplate = res;
+// });
 
 //Backbone Classroom model
 App.Classroom = Backbone.Model.extend({
@@ -89,6 +91,9 @@ App.ClassroomsView = Backbone.View.extend({
 // Classroom Model View
 App.ClassroomView = Backbone.View.extend({
 	tagName: "li",
+
+	template: Handlebars.compile('<span data="{{name}}" class="classroom">{{name}}</span>'),
+
 	initialize: function() {
 		this.render();
 	},
@@ -99,8 +104,14 @@ App.ClassroomView = Backbone.View.extend({
 	// 	socket.emit('studentJoinClassroom', this.model.get('name'), studentName);
 	// },
 	render: function() {
-		var template = Handlebars.compile(App.classroomTemplate);
-		this.$el.html(template(this.model.toJSON()));
+
+		// var source = $("#classroomListItem").html();
+		// var template = Handlebars.compile(source);
+		var html = this.template(this.model.toJSON());
+		this.$el.html(html);
+
+		// var template = Handlebars.compile(App.classroomTemplate);
+		// this.$el.html(template(this.model.toJSON()));
 	}
 });
 
