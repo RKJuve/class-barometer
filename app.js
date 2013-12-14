@@ -130,21 +130,21 @@ io = io.listen(server);
 
 // websocket behavior
 io.sockets.on('connection', function(client) {
-    //after join, emit list of available classrooms
-    client.emit('classroomsUpdate', _.keys(Classrooms));
+    // after join, emit classroom information
+    // client.emit('classroomsUpdate', Classrooms);
 
 
 
     // This is a response to a poll request for classroom information from the teacher route
     client.on('poll', function() {
-        client.emit('classroomsUpdate', _.keys(Classrooms));
+        client.emit('classroomsUpdate', Classrooms);
     });
 
     //create classroom currently before joining as teacher, potential security hole
     client.on('createClassroom', function(data) {
         createClassroom(data);
         console.log(Classrooms);
-        io.sockets.emit('classroomsUpdate', _.keys(Classrooms));
+        io.sockets.emit('classroomsUpdate', Classrooms);
     });
 
     //teacher connection

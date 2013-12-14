@@ -71,23 +71,13 @@ App.TeacherCreateClassroomParentView = Backbone.View.extend({
 
 	events: {
 		"click #createClassroom": "createClassroom",
-		"submit #createClassroomForm": "createClassroom",
-		"click .classroomList li": "joinClassroom"
+		"submit #createClassroomForm": "createClassroom"
 	},
 
 	initialize: function() {
 		console.log("TeacherCreateClassroomParentView initialized");
 		this.render();
 		var collection = this.collection;
-	},
-
-	joinClassroom: function(e) {
-		var data = $(e.target).children().data("name");
-		App.socket.emit('teacherJoinClassroom', data);
-
-		App.router.navigate("teacher/" + data, {
-			trigger: true
-		});
 	},
 
 	createClassroom: function(e) {
@@ -109,7 +99,7 @@ App.TeacherCreateClassroomParentView = Backbone.View.extend({
 	},
 
 	render: function() {
-		console.log("render teach render!!!");
+		console.log("teacherCreateClassroomParent render fired");
 		this.$el.empty();
 		var source = $("#teacherCreateClassroomParent").html();
 		var template = Handlebars.compile(source);
@@ -178,6 +168,19 @@ App.ClassroomsView = Backbone.View.extend({
 // Classroom Model View
 App.ClassroomView = Backbone.View.extend({
 	tagName: "li",
+
+	events: {
+		"click" : "joinClassroom"
+	},
+
+	joinClassroom: function(e) {
+		var data = $(e.target).children().data("name");
+		App.socket.emit('teacherJoinClassroom', data);
+
+		App.router.navigate("teacher/" + data, {
+			trigger: true
+		});
+	},
 
 	initialize: function() {
 		this.render();
