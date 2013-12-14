@@ -194,6 +194,33 @@ App.ClassroomView = Backbone.View.extend({
 	}
 });
 
+//Student classroom view  
+App.StudentClassroomView = Backbone.View.extend({
+	//tagname defaults to div
+
+	el: '#contentArea',
+
+	initialize: function() {
+		this.render();
+	},
+
+	render: function() {
+		console.log('studentclassroomview render hit');
+		this.$el.empty();
+		console.log(App.classrooms);
+
+		var source = $("#studentClassroomView").html();
+		var template = Handlebars.compile(source);
+		// the template should be handed the context of this.model, but 
+		// that is not working for some reason
+		var html = template();
+		this.$el.html(html);
+
+		// var template = Handlebars.compile(App.classroomTemplate);
+		// this.$el.html(template(this.model.toJSON()));
+	}
+});
+
 App.TeacherClassroomParentView = Backbone.View.extend({
 	el: "#contentArea",
 
