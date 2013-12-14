@@ -1,6 +1,9 @@
 .container{
   position: relative;
 }
+.navContainer{
+  position:relative;
+}
 #creators{
   .modal-body{
     a{
@@ -19,9 +22,9 @@
 .teacherPath, .studentPath{
   text-align: center;
   width: 100%;
-  background: $color-one;
-  color: $color-two;
-  border: $color-two solid 10px;
+  background: $color-four-t5;
+  color: $color-one;
+  //border: $color-two solid 10px;
   padding: 40px 0;
   margin-bottom: 10px;
   @include transition(all 0.3s ease-in-out);
@@ -29,14 +32,24 @@
     font-size: 2.5em;
   }
   &:hover{
-    border-color: $color-four;
-    color: $color-four;
+    //border-color: $color-four;
+    background: $color-four-t7;
   }
 }
 .createClassroomForm{
   input{
     width: 75%;
     margin: 0 0 10px 0;
+  }
+}
+.choosePathTitle{
+  color: $color-one;
+  text-align: center;
+  h2{
+    font-size: 4em;
+    @media (min-width: $screen-sm-min){
+      font-size: 8em;
+    }
   }
 }
 .classroomList{
@@ -62,4 +75,12 @@
       font-size: 2.5em;
     }
   }
+}
+
+.choosePathImage{
+  background: url(/img/teaching.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
