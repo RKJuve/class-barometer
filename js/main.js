@@ -22,20 +22,26 @@ App.SelectUserPathView = Backbone.View.extend({
 
 	initialize: function() {
 		console.log("SelectUserPathView initialized");
+		this.addBanner();
 		this.render();
 	},
 
+	addBanner: function() {
+		$('#wrap').addClass("choosePathImage");
+	},
 
 	teacherPath: function() {
 		App.router.navigate("teacher", {
 			trigger: true
 		});
+		$("#wrap").removeClass("choosePathImage");
 	},
 
 	studentPath: function() {
 		App.router.navigate("student", {
 			trigger: true
 		});
+		$("#wrap").removeClass("choosePathImage");
 	},
 
 	render: function() {
