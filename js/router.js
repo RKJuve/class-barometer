@@ -107,21 +107,37 @@ App.Router = Backbone.Router.extend({
           name: elem
         });
       });
-      
-    App.classrooms.set(temp);
-
-    App.studentClassroomsView = new App.StudentClassroomsView({
+      App.classrooms.set(temp);
+      App.studentClassroomsView = new App.StudentClassroomsView({
       collection: App.classrooms
+      });
     });
+    
 
-
-
-      
-    });
+    
   },
 
   studentJoinClassroom: function() {
     console.log("studentJoinClassroom route fired");
+    App.socket.emit("poll");
+
+    App.socket.on('classroomsUpdate', function(data) {
+      var temp = [];
+      _.each(data, function(elem, index, list) {
+        temp.push({
+          name: elem
+        });
+      });
+      App.classrooms.set(temp);
+      App.studentClassroomView = new App.StudentClassroomView({
+        collection: App.classrooms
+      });
+    });
+
+    
+
+
+    
   }
 });
 
