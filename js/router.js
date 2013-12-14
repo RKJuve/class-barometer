@@ -29,31 +29,35 @@ App.Router = Backbone.Router.extend({
   teacher: function() {
     console.log("teacher route fired");
 
+    App.socket.removeAllListeners('classroomsUpdate');
+
     App.socket.emit("poll");
 
     App.socket.on('classroomsUpdate', function(data) {
-      var temp = [];
-      console.log('text');
-      _.each(data, function(elem, index, list) {
-        temp.push({
+      var classroomsObjects = [];
+      var classroomsArray = _.keys(data);
+      _.each(classroomsArray, function(elem, index, list) {
+        classroomsObjects.push({
           name: elem
         });
       });
 
-      App.classrooms.set(temp);
+      App.classrooms.set(classroomsObjects);
 
-      // Need to instantiate TeacherCreateClassroomParentView here
-      if (App.teacherCreateClassroomParentView) {
-        // does this need to happen here? can it be part of the render?
-        App.teacherCreateClassroomParentView.el.innerHTML = '';
-        App.teacherCreateClassroomParentView.render();
-      } else {
-        App.teacherCreateClassroomParentView = new App.TeacherCreateClassroomParentView({
-          collection: App.classrooms
-        });
-      }
+      App.teacherCreateClassroomParentView = new App.TeacherCreateClassroomParentView({
+        collection: App.classrooms
+      });
 
     });
+
+
+    
+  },
+
+  joinClassroom: function() {
+    console.log("joinClassroom Route fired");
+
+    App.socket.removeAllListeners('nameUpdate');
 
     App.socket.on('nameUpdate', function(data){
        var temp = [];
@@ -69,12 +73,6 @@ App.Router = Backbone.Router.extend({
     App.socket.on('needNameUpdate1', function(data){
       socket.emit('needNameUpdate2');
     });
-    
-  },
-
-  joinClassroom: function() {
-    console.log("joinClassroom Route fired");
-
     // this needs to poll to update current info within the classroom
     //App.socket.emit("poll");
 
