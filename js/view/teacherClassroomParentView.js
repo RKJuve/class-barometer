@@ -24,9 +24,12 @@ App.TeacherClassroomParentView = Backbone.View.extend({
     var html = template();
     $("#footer").html(html);
   },
+  reRenderStudentsInClassroomView: function() {
 
+  },
   render: function() {
     $("#contentArea").empty();
+    console.log("----#contentArea emptied----");
     var source = $("#teacherClassroomView").html();
     var template = Handlebars.compile(source);
     // Probably will need the toJSON
@@ -34,10 +37,7 @@ App.TeacherClassroomParentView = Backbone.View.extend({
     var html = template();
     this.$el.html(html);
 
-    //render each studentInClassroomView
     
-
-
     // Adds in the footer to update with metrics
     this.addFooter();
     // You need this to initalize the bootstrap tabs
