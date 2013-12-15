@@ -119,7 +119,6 @@ App.TeacherCreateClassroomParentView = Backbone.View.extend({
 	},
 
 	render: function() {
-		console.log("render teach render!!!");
 		this.$el.empty();
 		var source = $("#teacherCreateClassroomParent").html();
 		var template = Handlebars.compile(source);
@@ -147,7 +146,6 @@ App.StudentClassroomsView = Backbone.View.extend({
 	},
 
 	render: function() {
-		console.log("render student render!!!");
 		this.$el.empty();
 		var source = $("#studentClassroomsView").html();
 		var template = Handlebars.compile(source);

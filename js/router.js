@@ -29,6 +29,7 @@ App.Router = Backbone.Router.extend({
   teacher: function() {
     console.log("teacher route fired");
 
+    App.socket.removeAllListeners('nameUpdate');
     App.socket.removeAllListeners('classroomsUpdate');
 
     App.socket.emit("poll");
@@ -58,6 +59,7 @@ App.Router = Backbone.Router.extend({
     console.log("joinClassroom Route fired");
 
     App.socket.removeAllListeners('nameUpdate');
+    App.socket.removeAllListeners('classroomsUpdate');
 
     App.socket.on('nameUpdate', function(data){
        var temp = [];
@@ -96,14 +98,15 @@ App.Router = Backbone.Router.extend({
   student: function() {
     console.log("student route fired");
 
-    App.socket.removeAllListeners("classroomsUpdate");
+    App.socket.removeAllListeners('nameUpdate');
+    App.socket.removeAllListeners('classroomsUpdate');
 
     App.socket.emit("poll");
 
 
     // TODO: Can this be added to main.js since this block is
     // being used multiple times?
-    
+
     App.socket.on('classroomsUpdate', function(data) {
       var classroomsObjects = [];
       var classroomsArray = _.keys(data);
@@ -126,6 +129,10 @@ App.Router = Backbone.Router.extend({
 
   studentJoinClassroom: function() {
     console.log("studentJoinClassroom route fired");
+
+    App.socket.removeAllListeners('nameUpdate');
+    App.socket.removeAllListeners('classroomsUpdate');
+    
     App.socket.emit("poll");
 
     App.socket.on('classroomsUpdate', function(data) {
