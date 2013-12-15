@@ -189,6 +189,38 @@ App.ClassroomsView = Backbone.View.extend({
 App.ClassroomView = Backbone.View.extend({
 	tagName: "li",
 
+	events: {
+		"click": "joinClassroom"
+	},
+
+	joinClassroom: function(e) {
+		//
+		// Since context cannot be passed through from the events
+		// in backbone, we're having an issue related to e.target
+		// identifying the icon within the span instead of the
+		// span itself. This is a hacky workaround that allows 
+		// the classroom name data to be passed regardless of
+		// where the user clicks.
+		//
+
+		var iconClick = $(e.target).closest("span").data("name");
+		var liClick = $(e.target).children().data("name");
+		var data;
+
+		if (!liClick) {
+			data = iconClick;
+		} else {
+			data = liClick;
+		}
+
+		console.log($(e.target).closest("span"));
+		App.socket.emit('teacherJoinClassroom', data);
+
+		App.router.navigate("teacher/" + data, {
+			trigger: true
+		});
+	},
+
 	initialize: function() {
 		this.render();
 	},
