@@ -35,14 +35,14 @@ var Classrooms = {};
 //  }
 var nameRegister = {};
 
-  // The server tracks the state of all teacher resources
-  // "schema":
-  // resources:
-  //   classroomID: {
-  //       topic: 'current topic',
-  //       links: ['array of links'],
-  //       etc: 'whatever else'
-  //   };
+// The server tracks the state of all teacher resources
+// "schema":
+// resources:
+//   classroomID: {
+//       topic: 'current topic',
+//       links: ['array of links'],
+//       etc: 'whatever else'
+//   };
 var resources = {};
 
 // functions that modify the Classrooms and nameRegister objects
@@ -83,7 +83,7 @@ function addStudent(classroomId, clientId, studentName) {
     // Classrooms[classroomId] = clientIdObject;
 
     Classrooms[classroomId][clientId] = {
-        status: "none",
+        status: "defcon3",
         comment: ""
     };
     nameRegister[classroomId][clientId] = studentName;
@@ -113,9 +113,9 @@ function removeClient(classroomId, clientId) {
 //     .use(express.static(path.join(__dirname, "bower_components")));
 
 app.use(express.static(__dirname,
-                path.join(__dirname, "bower_components"),
-                path.join(__dirname, "js"),
-                path.join(__dirname, "css")));
+    path.join(__dirname, "bower_components"),
+    path.join(__dirname, "js"),
+    path.join(__dirname, "css")));
 
 
 app.get("/", function(req, res) {
@@ -167,11 +167,11 @@ io.sockets.on('connection', function(client) {
         client.on('topicChange', function(data) {
             console.log(data);
             updateResourcesTopic(classroomId, data);
-            io.sockets.in(classroomId).emit('topicUpdate', data);
+            io.sockets. in (classroomId).emit('topicUpdate', data);
         });
 
 
-        client.on('needNameUpdate2', function(){
+        client.on('needNameUpdate2', function() {
             console.log("nameupdate needed2");
             client.emit('nameUpdate', nameRegister[classroomId]);
         });
@@ -191,7 +191,6 @@ io.sockets.on('connection', function(client) {
 
 
 
-
         addStudent(classroomId, client.id, studentName);
         console.log(Classrooms);
         console.log(nameRegister);
@@ -199,7 +198,7 @@ io.sockets.on('connection', function(client) {
         io.sockets. in (classroomId).emit("update", Classrooms[classroomId]);
         // update room that name update is needed
         console.log("nameupdate needed1");
-        io.sockets.in(classroomId).emit("needNameUpdate1");
+        io.sockets. in (classroomId).emit("needNameUpdate1");
 
         client.on('setStatus', function(status) {
             setStatus(classroomId, client.id, status);

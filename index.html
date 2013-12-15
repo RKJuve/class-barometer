@@ -100,9 +100,9 @@
       <div class="col-md-12">
         <h2>Welcome to {{name}}</h2>
       </div>
-      <div id="studentsInClassList" class="col-sm-3">
+      <div class="col-sm-3">
         <h2>Whos Gettin it?</h2>
-        <div class="status-t-view defcon1"><i class="fa fa-user"></i>test div</div>
+        <ul id="studentsInClassList"></ul>
       </div>
       <div class="col-sm-9">
             <!-- Nav tabs -->
@@ -177,9 +177,12 @@
     </script>
 
     <script id="studentInClassroom" type="text/x-handlebars-template">
-      <span class="status defcon3  {{status}}">status {{status}}</span>
+      <span class="status {{status}}">status {{status}}</span>
     </script>
 
+    <script id="studentInClassroom-t" type="text/x-handlebars-template">
+      <span class="status-t-view {{status}}"><i class="fa fa-user"></i> {{status}}</span>
+    </script>
     <script id="studentFooter" type="text/x-handlebars-template">
       <div class="floting-menu">
         <h2>Do you understand {{topic}} ?</h2>
