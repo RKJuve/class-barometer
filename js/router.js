@@ -123,6 +123,7 @@ App.Router = Backbone.Router.extend({
     console.log("student route fired");
 
     App.socket.removeAllListeners('nameUpdate');
+    App.socket.removeAllListeners('needNameUpdate1');
     App.socket.removeAllListeners('classroomsUpdate');
 
     App.socket.emit("poll");
@@ -148,22 +149,27 @@ App.Router = Backbone.Router.extend({
     });
   },
 
-  studentJoinClassroom: function() {
+  studentJoinClassroom: function(name) {
     console.log("studentJoinClassroom route fired");
 
     App.socket.removeAllListeners('nameUpdate');
     App.socket.removeAllListeners('classroomsUpdate');
 
-    App.socket.emit("studentJoinClassroom", "test", "TEST_STUDENT_NAME");
+    App.socket.emit("studentJoinClassroom", name, "TEST_STUDENT_NAME");
 
-    App.socket.on('classroomsUpdate', function(data) {
+
+    App.socket.on('update', function(data) {
+      console.log('studentStatusUpdate emitted from server');
       var temp = [];
+      console.log(data);
       _.each(data, function(elem, index, list) {
         temp.push({
           name: elem
         });
       });
+
       App.classrooms.set(temp);
+      
       App.studentClassroomView = new App.StudentClassroomView({
         collection: App.classrooms
       });
