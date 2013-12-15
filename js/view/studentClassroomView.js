@@ -8,6 +8,14 @@ App.StudentClassroomView = Backbone.View.extend({
     this.render();
   },
 
+  addFooter: function() {
+    $(".footerContainer").append("<div id='footer'></div>");
+    var source = $("#studentFooter").html();
+    var template = Handlebars.compile(source);
+    var html = template();
+    $("#footer").html(html);
+  },
+
   render: function() {
     console.log('studentclassroomview render hit');
     this.$el.empty();
@@ -26,6 +34,8 @@ App.StudentClassroomView = Backbone.View.extend({
     App.studentsInClassroomView = new App.StudentsInClassroomView({
       collection: App.classrooms
     });
+
+    this.addFooter();
 
     console.log(App.students.length);
   }
