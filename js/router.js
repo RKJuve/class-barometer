@@ -68,19 +68,22 @@ App.Router = Backbone.Router.extend({
     App.socket.removeAllListeners('classroomsUpdate');
 
     //initial page render
-    App.teacherClassroomParentView = new App.TeacherClassroomParentView({
-    });
+    App.teacherClassroomParentView = new App.TeacherClassroomParentView({});
 
     //update socket behavior
-    App.socket.on("update", function(data){
+    App.socket.on("update", function(data) {
       var temp = [];
       _.each(data, function(elem, index, list) {
-        temp.push({ id: index, status: elem.status, comment: elem.comment });
+        temp.push({
+          id: index,
+          status: elem.status,
+          comment: elem.comment
+        });
       });
 
       App.students.reset(temp);
       console.log('update happened, next is students status view');
-      App.studentsInClassroomView = new App.StudentsInClassroomView({
+      App.studentsInClassroomViewT = new App.StudentsInClassroomViewT({
         collection: App.students
       });
     });
@@ -101,7 +104,7 @@ App.Router = Backbone.Router.extend({
     App.socket.on('needNameUpdate1', function(data) {
       App.socket.emit('needNameUpdate2');
     });
-    
+
 
     // this needs to poll to update current info within the classroom
     //App.socket.emit("poll");
@@ -169,7 +172,7 @@ App.Router = Backbone.Router.extend({
       });
 
       App.classrooms.set(temp);
-      
+
       App.studentClassroomView = new App.StudentClassroomView({
         collection: App.classrooms
       });
