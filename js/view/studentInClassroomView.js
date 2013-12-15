@@ -10,10 +10,10 @@ App.StudentsInClassroomView = Backbone.View.extend({
   render: function() {
     this.$el.empty();
     console.log("rendering all students status");
-    this.collection.each(function(model){
+    this.collection.each(function(model) {
       App.studentInClassroomView = new App.StudentInClassroomView({
         model: model
-      })
+      });
     });
   }
 
@@ -34,6 +34,53 @@ App.StudentInClassroomView = Backbone.View.extend({
     console.log("rendering one student's status");
 
     var source = $("#studentInClassroom").html();
+    var template = Handlebars.compile(source);
+    var html = template(this.model.toJSON());
+    this.$el.append(html);
+  }
+
+});
+
+
+
+// Teacher
+
+// Renders area for students in the classroom and their status
+App.StudentsInClassroomViewT = Backbone.View.extend({
+  el: "#studentsInClassList",
+  initialize: function() {
+    this.render();
+  },
+
+  // Todo: Will need add functionality to set status state defcon1 - 3
+
+  render: function() {
+    this.$el.empty();
+    console.log("rendering all students status");
+    this.collection.each(function(model) {
+      App.studentInClassroomViewT = new App.StudentInClassroomViewT({
+        model: model
+      });
+    });
+  }
+
+});
+
+// Renders each square for students in the classroom and their status
+App.StudentInClassroomViewT = Backbone.View.extend({
+  el: "#studentsInClassList",
+  tagName: 'li',
+
+  initialize: function() {
+    this.render();
+  },
+
+  // Todo: Will need add functionality to set status state defcon1 - 3
+
+  render: function() {
+    console.log("rendering one student's status");
+
+    var source = $("#studentInClassroom-t").html();
     var template = Handlebars.compile(source);
     var html = template(this.model.toJSON());
     this.$el.append(html);
