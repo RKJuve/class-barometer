@@ -73,6 +73,15 @@ function addStudent(classroomId, clientId, studentName) {
     // if (!Classrooms[classroomId]) {
     //     createClassroom(classroomId)
     // }
+
+    // ERROR: This is crashing the server, we need to
+    // do some more work to get this data in the
+    // intended format.
+
+    // First set of work to try to correct.
+    // var clientIdObject = { clientId: clientId};
+    // Classrooms[classroomId] = clientIdObject;
+
     Classrooms[classroomId][clientId] = {
         status: "none",
         comment: ""
@@ -179,6 +188,10 @@ io.sockets.on('connection', function(client) {
         //client joins room
         client.join(classroomId);
         //client fed to addStudent function
+
+
+
+
         addStudent(classroomId, client.id, studentName);
         console.log(Classrooms);
         console.log(nameRegister);
