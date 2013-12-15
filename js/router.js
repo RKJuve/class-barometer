@@ -16,6 +16,13 @@ App.Router = Backbone.Router.extend({
     App.socket = io.connect(window.location.origin);
   },
 
+  removeFooter: function() {
+    console.log("------------ Remove!! -------------");
+    $("#footer").fadeOut('fast', function() {
+      $('#footer').remove();
+    });
+  },
+
   index: function() {
     console.log("index route fired");
 
@@ -50,9 +57,7 @@ App.Router = Backbone.Router.extend({
       });
 
     });
-
-
-    
+    this.removeFooter();
   },
 
   joinClassroom: function(name) {
@@ -62,18 +67,21 @@ App.Router = Backbone.Router.extend({
     App.socket.removeAllListeners('nameUpdate');
     App.socket.removeAllListeners('classroomsUpdate');
 
-    App.socket.on('nameUpdate', function(data){
-       var temp = [];
-       _.each(data, function(elem, index, list) {
-         temp.push({id: index, name: elem});
-       });
-       App.students.set(temp);
- 
-       console.log(App.students);
+    App.socket.on('nameUpdate', function(data) {
+      var temp = [];
+      _.each(data, function(elem, index, list) {
+        temp.push({
+          id: index,
+          name: elem
+        });
+      });
+      App.students.set(temp);
+
+      console.log(App.students);
     });
-    
-    App.socket.on('needNameUpdate1', function(data){
-      App.socket.emit('needNameUpdate2');
+
+    App.socket.on('needNameUpdate1', function(data) {
+      socket.emit('needNameUpdate2');
     });
     // this needs to poll to update current info within the classroom
     //App.socket.emit("poll");
@@ -119,12 +127,9 @@ App.Router = Backbone.Router.extend({
       App.classrooms.set(classroomsObjects);
 
       App.studentClassroomsView = new App.StudentClassroomsView({
-      collection: App.classrooms
+        collection: App.classrooms
       });
     });
-    
-
-    
   },
 
   studentJoinClassroom: function() {
@@ -147,11 +152,12 @@ App.Router = Backbone.Router.extend({
         collection: App.classrooms
       });
     });
-    
+
   }
 });
 
 App.router = new App.Router();
+
 Backbone.history.start({
   root: "/"
 });

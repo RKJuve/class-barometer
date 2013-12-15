@@ -1,7 +1,9 @@
 // Overall View for a teacher classroom
 App.TeacherClassroomParentView = Backbone.View.extend({
   el: "#contentArea",
-
+  events: {
+    "hashchange": "removeFooter"
+  },
   initialize: function() {
     console.log("TeacherClassroomParentView initialized");
     this.render();
@@ -14,6 +16,15 @@ App.TeacherClassroomParentView = Backbone.View.extend({
     });
   },
 
+  addFooter: function() {
+    // $(".footerContainer").attr('id', 'footer');
+    $(".footerContainer").append("<div id='footer'></div>");
+    var source = $("#teacherFooter").html();
+    var template = Handlebars.compile(source);
+    var html = template();
+    $("#footer").html(html);
+  },
+
   render: function() {
     $("#contentArea").empty();
     var source = $("#teacherClassroomView").html();
@@ -22,6 +33,9 @@ App.TeacherClassroomParentView = Backbone.View.extend({
     // var html = template(this.model.toJSON());
     var html = template();
     this.$el.html(html);
+
+    // Adds in the footer to update with metrics
+    this.addFooter();
     // You need this to initalize the bootstrap tabs
     this.startBootstrapTabs();
   },
