@@ -66,7 +66,6 @@ App.Router = Backbone.Router.extend({
        _.each(data, function(elem, index, list) {
          temp.push({id: index, name: elem});
        });
- 
        App.students.set(temp);
  
        console.log(App.students);
@@ -132,8 +131,8 @@ App.Router = Backbone.Router.extend({
 
     App.socket.removeAllListeners('nameUpdate');
     App.socket.removeAllListeners('classroomsUpdate');
-    
-    App.socket.emit("poll");
+
+    App.socket.emit("studentJoinClassroom", {name: "TEST_CLASSROOM_ID"}, {name: "TEST_STUDENT_NAME"});
 
     App.socket.on('classroomsUpdate', function(data) {
       var temp = [];
@@ -147,10 +146,6 @@ App.Router = Backbone.Router.extend({
         collection: App.classrooms
       });
     });
-
-    
-
-
     
   }
 });
