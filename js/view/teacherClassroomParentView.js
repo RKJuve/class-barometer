@@ -2,7 +2,7 @@
 App.TeacherClassroomParentView = Backbone.View.extend({
   el: "#contentArea",
   events: {
-    "hashchange": "removeFooter"
+    "hashchange": "removeFooter",
   },
   initialize: function() {
     console.log("TeacherClassroomParentView initialized");
@@ -23,6 +23,14 @@ App.TeacherClassroomParentView = Backbone.View.extend({
     var template = Handlebars.compile(source);
     var html = template();
     $("#footer").html(html);
+
+    // Hacky way to add events, wasn't working when adding to
+    // backbone events
+    $('.create-topic-btn').click(function() {
+      var topic = $('.create-topic-input').val();
+      App.socket.emit('topicChange', topic);
+      console.log('topicChange event fired: ' + topic);
+    });
   },
   reRenderStudentsInClassroomView: function() {
 

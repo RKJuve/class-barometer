@@ -41,6 +41,14 @@ App.Students = Backbone.Collection.extend({
 	model: App.Student
 });
 
+// Backbone topic model
+App.Topic = Backbone.Model.extend({
+	save: function() {
+		return null;
+	},
+	defaults: {topic: "No topic currently set"}
+});
+
 // Students Collection View
 App.StudentsView = Backbone.View.extend({
 	el: "#dropzone",

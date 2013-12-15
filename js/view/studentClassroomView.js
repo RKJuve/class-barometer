@@ -12,7 +12,7 @@ App.StudentClassroomView = Backbone.View.extend({
     $(".footerContainer").append("<div id='footer'></div>");
     var source = $("#studentFooter").html();
     var template = Handlebars.compile(source);
-    var html = template();
+    var html = template(this.model.toJSON());
     $("#footer").html(html);
   },
 
