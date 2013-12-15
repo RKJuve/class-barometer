@@ -13,6 +13,9 @@ App.Router = Backbone.Router.extend({
     App.students = new App.Students();
     App.classrooms = new App.Classrooms();
 
+    //Create new topic model
+    App.topic = new App.Topic();
+
     App.socket = io.connect(window.location.origin);
   },
 
@@ -98,6 +101,12 @@ App.Router = Backbone.Router.extend({
       console.log(App.students);
     });
 
+    
+
+    App.socket.on('topicUpdate', function(data) {
+      App.topic.set({topic: data});
+    });
+
     App.socket.on('needNameUpdate1', function(data) {
       App.socket.emit('needNameUpdate2');
     });
@@ -171,7 +180,8 @@ App.Router = Backbone.Router.extend({
       App.classrooms.set(temp);
       
       App.studentClassroomView = new App.StudentClassroomView({
-        collection: App.classrooms
+        collection: App.classrooms,
+        topicModel: App.topic
       });
     });
 
