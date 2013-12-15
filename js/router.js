@@ -60,9 +60,10 @@ App.Router = Backbone.Router.extend({
     this.removeFooter();
   },
 
-  joinClassroom: function() {
+  joinClassroom: function(name) {
     console.log("joinClassroom Route fired");
-
+    console.log(name);
+    App.socket.emit('teacherJoinClassroom', name);
     App.socket.removeAllListeners('nameUpdate');
     App.socket.removeAllListeners('classroomsUpdate');
 
