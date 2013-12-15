@@ -68,6 +68,7 @@
       </div> 
       <div class="col-md-12">
         <form id="createClassroomForm" class="createClassroomForm">
+        <input id='studentName' name="studentName" type="text" class="form-control input-lg" placeholder="What is your name?"></input>
         <input name="classroomName" type="text" class="form-control input-lg" placeholder="What would you like to call your classroom?"></input>
         <button type="submit" id="createClassroom" class="btn btn-primary btn-lg teacher">Create Classroom</button>
         </form>
@@ -82,7 +83,10 @@
     <script id="studentClassroomsView" type="text/x-handlebars-template">
       <div class="col-md-12">
         <h2>Join a Classroom</h2>
-      </div> 
+      </div>
+      <div class-"col-md-12">
+      <input id='studentName' name="studentName" type="text" class="form-control input-lg" placeholder="What is your name?"></input>
+      </div>
       <div class="col-md-12">
         <h3><i class="fa fa-bell"></i> Current Classrooms</h3>
         <ul id='classroomList' class="classroomList"></ul>
@@ -181,7 +185,7 @@
     </script>
 
     <script id="studentInClassroom-t" type="text/x-handlebars-template">
-      <span class="status-t-view {{status}}"><i class="fa fa-user"></i> {{status}}</span>
+      <span class="status-t-view {{status}}"><i class="fa fa-user"></i> {{name}}</span>
     </script>
     <script id="studentFooter" type="text/x-handlebars-template">
       <div class="floting-menu">

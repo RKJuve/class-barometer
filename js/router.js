@@ -98,7 +98,9 @@ App.Router = Backbone.Router.extend({
       });
       App.students.set(temp);
 
-      console.log(App.students);
+      App.studentsInClassroomViewT = new App.StudentsInClassroomViewT({
+        collection: App.students
+      });
     });
 
     App.socket.on('needNameUpdate1', function(data) {
@@ -161,7 +163,7 @@ App.Router = Backbone.Router.extend({
     App.socket.removeAllListeners('nameUpdate');
     App.socket.removeAllListeners('classroomsUpdate');
 
-    App.socket.emit("studentJoinClassroom", name, "TEST_STUDENT_NAME");
+    App.socket.emit("studentJoinClassroom", name, App.localStudentName);
 
 
     //update socket behavior
