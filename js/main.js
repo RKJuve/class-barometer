@@ -202,9 +202,6 @@ App.ClassroomView = Backbone.View.extend({
 			data = liClick;
 		}
 
-		console.log($(e.target).closest("span"));
-		App.socket.emit('teacherJoinClassroom', data);
-
 		var windowLocation = window.location.hash.slice(1);
 
 		App.router.navigate(windowLocation + "/" + data, {
