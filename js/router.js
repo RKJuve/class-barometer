@@ -154,6 +154,9 @@ App.Router = Backbone.Router.extend({
 
   studentJoinClassroom: function(name) {
     console.log("studentJoinClassroom route fired");
+    App.studentClassroomView = new App.StudentClassroomView({
+      //collection: App.classrooms
+    });
 
     App.socket.removeAllListeners('nameUpdate');
     App.socket.removeAllListeners('classroomsUpdate');
@@ -161,20 +164,21 @@ App.Router = Backbone.Router.extend({
     App.socket.emit("studentJoinClassroom", name, "TEST_STUDENT_NAME");
 
 
-    App.socket.on('update', function(data) {
-      console.log('studentStatusUpdate emitted from server');
+    //update socket behavior
+    App.socket.on("update", function(data) {
       var temp = [];
-      console.log(data);
       _.each(data, function(elem, index, list) {
         temp.push({
-          name: elem
+          id: index,
+          status: elem.status,
+          comment: elem.comment
         });
       });
 
-      App.classrooms.set(temp);
-
-      App.studentClassroomView = new App.StudentClassroomView({
-        collection: App.classrooms
+      App.students.reset(temp);
+      console.log('update happened, next is students status view');
+      App.studentsInClassroomViewT = new App.StudentsInClassroomViewT({
+        collection: App.students
       });
     });
 
