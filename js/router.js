@@ -177,7 +177,7 @@ App.Router = Backbone.Router.extend({
 
       App.students.reset(temp);
       console.log('update happened, next is students status view');
-      App.studentsInClassroomViewT = new App.StudentsInClassroomViewT({
+      App.studentsInClassroomView = new App.StudentsInClassroomView({
         collection: App.students
       });
     });
