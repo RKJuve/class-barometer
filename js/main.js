@@ -243,7 +243,8 @@ App.StudentClassroomView = Backbone.View.extend({
 	render: function() {
 		console.log('studentclassroomview render hit');
 		this.$el.empty();
-		console.log(App.classrooms);
+
+		//console.log(App.students);
 
 		var source = $("#studentClassroomView").html();
 		var template = Handlebars.compile(source);
@@ -252,9 +253,37 @@ App.StudentClassroomView = Backbone.View.extend({
 		var html = template();
 		this.$el.html(html);
 
-		// var template = Handlebars.compile(App.classroomTemplate);
-		// this.$el.html(template(this.model.toJSON()));
+		// Renders all the boxes indecating students status
+		// Will need a for each or somthing but this is firing up the template
+		App.studentsInClassroomView = new App.StudentsInClassroomView({
+			collection: App.classrooms
+		});
+
+		console.log(App.students.length);
 	}
+});
+
+App.StudentsInClassroomView = Backbone.View.extend({
+	el: "#studentsInClassList",
+	tagName: 'li',
+
+	initialize: function() {
+		this.render();
+		console.log("start students in class");
+	},
+
+	// Todo: Will need add functionality to set status state defcon1 - 3
+
+	render: function() {
+		//this.$el.empty();
+		console.log("rendering who is in class");
+
+		var source = $("#studentInClassroom").html();
+		var template = Handlebars.compile(source);
+		var html = template();
+		this.$el.html(html);
+	}
+
 });
 
 App.TeacherClassroomParentView = Backbone.View.extend({

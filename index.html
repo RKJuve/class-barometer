@@ -159,33 +159,24 @@
     </script>
 
     <script id="studentClassroomView" type="text/x-handlebars-template">
-          <div class="col-md-8">
-            <h2>{{data}}</h2>
-          </div>
-          <div class="col-md-4 student-timer">
-            <h2><i class="fa fa-clock-o"></i> 00h 00m 00s</h2>
-          </div>
-          <div class="col-sm-3">
-            <h2>Who is Gettin it?</h2>
-            <div class="status defcon1"></div>
-            <div class="status defcon1"></div>
-            <div class="status defcon3"></div>
-            <div class="status defcon1"></div>
-            <div class="status defcon2"></div>
-            <div class="status defcon1"></div>
-            <div class="status defcon1"></div>
-            <div class="status defcon3"></div>
-            <div class="status defcon1"></div>
-            <div class="status defcon1"></div>
-            <div class="status defcon2"></div>
-            <div class="status defcon3"></div>
-            <div class="status defcon1"></div>
-            <div class="status defcon1"></div>
-          </div>
-          <div class="col-sm-9">
-            <h2>The Chat</h2>
-          </div>
-          </script>
+      <div class="col-md-8">
+        <h2>{{data}}</h2>
+      </div>
+      <div class="col-md-4 student-timer">
+        <h2><i class="fa fa-clock-o"></i> 00h 00m 00s</h2>
+      </div>
+      <div class="col-sm-3">
+        <h2>Who is Gettin it?</h2>
+        <ul id="studentsInClassList"></ul>
+      </div>
+      <div class="col-sm-9">
+        <h2>The Chat</h2>
+      </div>
+    </script>
+
+    <script id="studentInClassroom" type="text/x-handlebars-template">
+      <span class="status defcon3">status</span>
+    </script>
 
          <script>
     // // create Students collection instance
