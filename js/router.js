@@ -96,16 +96,25 @@ App.Router = Backbone.Router.extend({
   student: function() {
     console.log("student route fired");
 
+    App.socket.removeAllListeners("classroomsUpdate");
+
     App.socket.emit("poll");
 
+
+    // TODO: Can this be added to main.js since this block is
+    // being used multiple times?
+    
     App.socket.on('classroomsUpdate', function(data) {
-      var temp = [];
-      _.each(data, function(elem, index, list) {
-        temp.push({
+      var classroomsObjects = [];
+      var classroomsArray = _.keys(data);
+      _.each(classroomsArray, function(elem, index, list) {
+        classroomsObjects.push({
           name: elem
         });
       });
-      App.classrooms.set(temp);
+
+      App.classrooms.set(classroomsObjects);
+
       App.studentClassroomsView = new App.StudentClassroomsView({
       collection: App.classrooms
       });
