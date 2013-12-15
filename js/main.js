@@ -27,21 +27,31 @@ App.SelectUserPathView = Backbone.View.extend({
 	},
 
 	addBanner: function() {
-		$('#wrap').addClass("choosePathImage");
+		$('#wrap').prepend('<div class="choosePathImage"></div>');
+		$(window).resize(function() {
+			$('.choosePathImage').height($(window).height());
+		});
+		$(window).trigger('resize');
 	},
 
 	teacherPath: function() {
 		App.router.navigate("teacher", {
 			trigger: true
 		});
-		$("#wrap").removeClass("choosePathImage");
+		this.fadeImage();
 	},
 
 	studentPath: function() {
 		App.router.navigate("student", {
 			trigger: true
 		});
-		$("#wrap").removeClass("choosePathImage");
+		this.fadeImage();
+	},
+
+	fadeImage: function() {
+		$(".choosePathImage").fadeOut("slow", function() {
+			$(".choosePathImage").remove();
+		});
 	},
 
 	render: function() {
@@ -71,13 +81,23 @@ App.TeacherCreateClassroomParentView = Backbone.View.extend({
 
 	events: {
 		"click #createClassroom": "createClassroom",
-		"submit #createClassroomForm": "createClassroom"
+		"submit #createClassroomForm": "createClassroom",
+		"click .classroomList li": "joinClassroom"
 	},
 
 	initialize: function() {
 		console.log("TeacherCreateClassroomParentView initialized");
 		this.render();
 		var collection = this.collection;
+	},
+
+	joinClassroom: function(e) {
+		var data = $(e.target).children().data("name");
+		App.socket.emit('teacherJoinClassroom', data);
+
+		App.router.navigate("teacher/" + data, {
+			trigger: true
+		});
 	},
 
 	createClassroom: function(e) {
@@ -99,7 +119,7 @@ App.TeacherCreateClassroomParentView = Backbone.View.extend({
 	},
 
 	render: function() {
-		console.log("teacherCreateClassroomParent render fired");
+		console.log("render teach render!!!");
 		this.$el.empty();
 		var source = $("#teacherCreateClassroomParent").html();
 		var template = Handlebars.compile(source);
@@ -170,7 +190,7 @@ App.ClassroomView = Backbone.View.extend({
 	tagName: "li",
 
 	events: {
-		"click" : "joinClassroom"
+		"click": "joinClassroom"
 	},
 
 	joinClassroom: function(e) {
@@ -189,9 +209,7 @@ App.ClassroomView = Backbone.View.extend({
 
 		if (!liClick) {
 			data = iconClick;
-		}
-		
-		else {
+		} else {
 			data = liClick;
 		}
 
