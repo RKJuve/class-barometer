@@ -196,7 +196,7 @@ io.sockets.on('connection', function(client) {
         console.log(Classrooms);
         console.log(nameRegister);
         // update room about student
-        io.sockets. in (classroomId).emit("update", Classrooms[classroomId]);
+        io.sockets. in (classroomId).emit("classroomsUpdate", Classrooms[classroomId]);
         // update room that name update is needed
         console.log("nameupdate needed1");
         io.sockets.in(classroomId).emit("needNameUpdate1");

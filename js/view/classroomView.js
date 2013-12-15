@@ -27,6 +27,8 @@ App.ClassroomView = Backbone.View.extend({
     }
 
     var windowLocation = window.location.hash.slice(1);
+    console.log("********Window Location Set to :");
+    console.log(windowLocation);
 
     App.router.navigate(windowLocation + "/" + data, {
       trigger: true

@@ -4,23 +4,13 @@ App.TeacherCreateClassroomParentView = Backbone.View.extend({
 
   events: {
     "click #createClassroom": "createClassroom",
-    "submit #createClassroomForm": "createClassroom",
-    "click .classroomList li": "joinClassroom"
+    "submit #createClassroomForm": "createClassroom"
   },
 
   initialize: function() {
     console.log("TeacherCreateClassroomParentView initialized");
     this.render();
     var collection = this.collection;
-  },
-
-  joinClassroom: function(e) {
-    var data = $(e.target).children().data("name");
-    App.socket.emit('teacherJoinClassroom', data);
-
-    App.router.navigate("teacher/" + data, {
-      trigger: true
-    });
   },
 
   createClassroom: function(e) {
