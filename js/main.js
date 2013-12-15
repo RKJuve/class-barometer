@@ -137,22 +137,13 @@ App.StudentClassroomsView = Backbone.View.extend({
 	el: "#contentArea",
 
 	events: {
-		"click .classroomList li": "joinClassroom"
+
 	},
 
 	initialize: function() {
 		console.log("TeacherCreateClassroomParentView initialized");
 		this.render();
 		var collection = this.collection;
-	},
-
-	joinClassroom: function(e) {
-		var data = $(e.target).children().data("name");
-		App.socket.emit('teacherJoinClassroom', data);
-
-		App.router.navigate("student/" + data, {
-			trigger: true
-		});
 	},
 
 	render: function() {
@@ -216,7 +207,9 @@ App.ClassroomView = Backbone.View.extend({
 		console.log($(e.target).closest("span"));
 		App.socket.emit('teacherJoinClassroom', data);
 
-		App.router.navigate("teacher/" + data, {
+		var windowLocation = window.location.hash.slice(1);
+
+		App.router.navigate(windowLocation + "/" + data, {
 			trigger: true
 		});
 	},
