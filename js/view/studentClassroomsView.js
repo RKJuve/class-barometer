@@ -3,7 +3,7 @@ App.StudentClassroomsView = Backbone.View.extend({
   el: "#contentArea",
 
   initialize: function() {
-    console.log("TeacherCreateClassroomParentView initialized");
+    console.log("StudentClassroomsView initialized");
     this.render();
     var collection = this.collection;
   },
