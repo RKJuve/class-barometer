@@ -81,7 +81,7 @@ App.Router = Backbone.Router.extend({
     });
 
     App.socket.on('needNameUpdate1', function(data) {
-      socket.emit('needNameUpdate2');
+      App.socket.emit('needNameUpdate2');
     });
     // this needs to poll to update current info within the classroom
     //App.socket.emit("poll");
@@ -138,7 +138,7 @@ App.Router = Backbone.Router.extend({
     App.socket.removeAllListeners('nameUpdate');
     App.socket.removeAllListeners('classroomsUpdate');
 
-    App.socket.emit("studentJoinClassroom", "TEST_CLASSROOM_ID", "TEST_STUDENT_NAME");
+    App.socket.emit("studentJoinClassroom", "test", "TEST_STUDENT_NAME");
 
     App.socket.on('classroomsUpdate', function(data) {
       var temp = [];

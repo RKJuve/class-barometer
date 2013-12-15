@@ -34,6 +34,10 @@ App.TeacherClassroomParentView = Backbone.View.extend({
     var html = template();
     this.$el.html(html);
 
+    //render each studentInClassroomView
+    
+
+
     // Adds in the footer to update with metrics
     this.addFooter();
     // You need this to initalize the bootstrap tabs

@@ -100,18 +100,9 @@
       <div class="col-md-12">
         <h2>Welcome to {{name}}</h2>
       </div>
-      <div class="col-sm-3">
+      <div id="#studentsInClassList" class="col-sm-3">
         <h2>Whos Gettin it?</h2>
-        <div class="status-t-view defcon1"><i class="fa fa-user"></i> Name</div>
-        <div class="status-t-view defcon1"><i class="fa fa-user"></i> Name</div>
-        <div class="status-t-view defcon3"><i class="fa fa-user"></i> Name</div>
-        <div class="status-t-view defcon1"><i class="fa fa-user"></i> Name</div>
-        <div class="status-t-view defcon2"><i class="fa fa-user"></i> Name</div>
-        <div class="status-t-view defcon1"><i class="fa fa-user"></i> Name</div>
-        <div class="status-t-view defcon1"><i class="fa fa-user"></i> Name</div>
-        <div class="status-t-view defcon3"><i class="fa fa-user"></i> Name</div>
-        <div class="status-t-view defcon2"><i class="fa fa-user"></i> Name</div>
-        <div class="status-t-view defcon3"><i class="fa fa-user"></i> Name</div>
+        <div class="status-t-view defcon1"><i class="fa fa-user"></i>test div</div>
       </div>
       <div class="col-sm-9">
             <!-- Nav tabs -->
@@ -186,7 +177,7 @@
     </script>
 
     <script id="studentInClassroom" type="text/x-handlebars-template">
-      <span class="status defcon3">status</span>
+      <span class="status defcon3  {{status}}">status {{status}}</span>
     </script>
 
     <script id="studentFooter" type="text/x-handlebars-template">
