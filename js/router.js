@@ -55,9 +55,10 @@ App.Router = Backbone.Router.extend({
     
   },
 
-  joinClassroom: function() {
+  joinClassroom: function(name) {
     console.log("joinClassroom Route fired");
-
+    console.log(name);
+    App.socket.emit('teacherJoinClassroom', name);
     App.socket.removeAllListeners('nameUpdate');
     App.socket.removeAllListeners('classroomsUpdate');
 
@@ -72,7 +73,7 @@ App.Router = Backbone.Router.extend({
     });
     
     App.socket.on('needNameUpdate1', function(data){
-      socket.emit('needNameUpdate2');
+      App.socket.emit('needNameUpdate2');
     });
     // this needs to poll to update current info within the classroom
     //App.socket.emit("poll");
