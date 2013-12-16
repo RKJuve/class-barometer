@@ -67,9 +67,9 @@ App.Students = Backbone.Collection.extend({
 		var totalStudents = temp[0] + temp[1] + temp[2];
 
 		App.stats = new App.Stats({
-			defcon1: 100*(temp[0]/totalStudents)+'%',
-			defcon2: 100*(temp[1]/totalStudents)+'%',
-			defcon3: 100*(temp[2]/totalStudents)+'%'
+			defcon1: Math.round(100*(temp[0]/totalStudents))+'%',
+			defcon2: Math.round(100*(temp[1]/totalStudents))+'%',
+			defcon3: Math.round(100*(temp[2]/totalStudents))+'%'
 		});
 
 	}
