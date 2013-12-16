@@ -66,6 +66,21 @@ App.Router = Backbone.Router.extend({
   },
 
   joinClassroom: function(name) {
+    // // change BB model behavior
+    // App.Student = Backbone.Model.extend({
+    //   //override AJAX save method, don't need it/errors
+    //   save: function() {
+    //     return null;
+    //   },
+    //   initialize: function() {
+    //      this.on('change', function() {
+    //        console.log('student model change event');
+    //        this.collection.createStatsModel();
+    //      })
+    //   }
+    // });
+    // App.students = new App.Students();
+
     console.log("joinClassroom Route fired");
     console.log(name);
     App.socket.emit('teacherJoinClassroom', name);
@@ -91,6 +106,10 @@ App.Router = Backbone.Router.extend({
       App.studentsInClassroomViewT = new App.StudentsInClassroomViewT({
         collection: App.students
       });
+      App.teacherFooterView = new App.TeacherFooterView({
+          model: App.stats
+    });
+    
     });
 
     App.socket.on('nameUpdate', function(data) {

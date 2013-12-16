@@ -34,6 +34,7 @@ App.Student = Backbone.Model.extend({
 	save: function() {
 		return null;
 	},
+	// commented out, teacher later gets this added
 	initialize: function() {
 		this.on('change', function() {
 			console.log('student model change event');
@@ -71,9 +72,7 @@ App.Students = Backbone.Collection.extend({
 			defcon2: Math.round(100*(temp[1]/totalStudents))+'%',
 			defcon3: Math.round(100*(temp[2]/totalStudents))+'%'
 		});
-		App.teacherFooterView = new App.TeacherFooterView({
-       		model: App.stats
-    });
+		
 
 	}
 });
