@@ -84,7 +84,7 @@ App.Router = Backbone.Router.extend({
         });
       });
 
-      App.students.reset(temp);
+      App.students.set(temp);
       console.log('update happened, next is students status view');
       App.studentsInClassroomViewT = new App.StudentsInClassroomViewT({
         collection: App.students
@@ -165,6 +165,14 @@ App.Router = Backbone.Router.extend({
 
   studentJoinClassroom: function(name) {
     console.log("studentJoinClassroom route fired");
+
+    if (!App.localStudentName) {
+      App.router.navigate('/', {
+        trigger: true
+      });
+      return false;
+    }
+
     App.studentClassroomView = new App.StudentClassroomView({
       //collection: App.classrooms
     });
@@ -174,6 +182,15 @@ App.Router = Backbone.Router.extend({
 
     App.socket.emit("studentJoinClassroom", name, App.localStudentName);
 
+    $('.def-btn.defcon1').on('click', function(){
+      App.socket.emit("setStatus", "defcon1")
+    });
+    $('.def-btn.defcon2').on('click', function(){
+      App.socket.emit("setStatus", "defcon2")
+    });
+    $('.def-btn.defcon3').on('click', function(){
+      App.socket.emit("setStatus", "defcon3")
+    });
 
     //update socket behavior
     App.socket.on("update", function(data) {
@@ -185,13 +202,6 @@ App.Router = Backbone.Router.extend({
           comment: elem.comment
         });
       });
-
-
-      // App.students.reset(temp);
-      // console.log('update happened, next is students status view');
-      // App.studentsInClassroomView = new App.StudentsInClassroomView({
-      //   collection: App.students
-      // });
 
       App.students.set(temp);
       App.studentsInClassroomView = new App.StudentsInClassroomView({

@@ -123,15 +123,15 @@ app.get("/", function(req, res) {
     res.render("index");
 });
 
-app.get("/student", function(req, res) {
-    console.log("student route hit");
-    res.render("student");
-});
+// app.get("/student", function(req, res) {
+//     console.log("student route hit");
+//     res.render("student");
+// });
 
-app.get("/teacher", function(req, res) {
-    console.log("teacher route hit");
-    res.render("teacher");
-});
+// app.get("/teacher", function(req, res) {
+//     console.log("teacher route hit");
+//     res.render("teacher");
+// });
 
 // create app server, wrap it in websocket server
 var server = http.createServer(app);
