@@ -17,20 +17,25 @@ App.TeacherClassroomParentView = Backbone.View.extend({
   },
 
   addFooter: function() {
-    // $(".footerContainer").attr('id', 'footer');
-    $(".footerContainer").append("<div id='footer'></div>");
-    var source = $("#teacherFooter").html();
-    var template = Handlebars.compile(source);
-    var html = template();
-    $("#footer").html(html);
-
-    // Hacky way to add events, wasn't working when adding to
-    // backbone events
-    $('.create-topic-btn').click(function() {
-      var topic = $('.create-topic-input').val();
-      App.socket.emit('topicChange', topic);
-      console.log('topicChange event fired: ' + topic);
+    App.teacherFooterView = new App.TeacherFooterView({
+      // model: App.stats
     });
+
+
+    // // $(".footerContainer").attr('id', 'footer');
+    // $(".footerContainer").append("<div id='footer'></div>");
+    // var source = $("#teacherFooter").html();
+    // var template = Handlebars.compile(source);
+    // var html = template();
+    // $("#footer").html(html);
+
+    // // Hacky way to add events, wasn't working when adding to
+    // // backbone events
+    // $('.create-topic-btn').click(function() {
+    //   var topic = $('.create-topic-input').val();
+    //   App.socket.emit('topicChange', topic);
+    //   console.log('topicChange event fired: ' + topic);
+    // });
   },
   reRenderStudentsInClassroomView: function() {
 

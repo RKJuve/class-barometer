@@ -71,6 +71,9 @@ App.Students = Backbone.Collection.extend({
 			defcon2: Math.round(100*(temp[1]/totalStudents))+'%',
 			defcon3: Math.round(100*(temp[2]/totalStudents))+'%'
 		});
+		App.teacherFooterView = new App.TeacherFooterView({
+       		model: App.stats
+    });
 
 	}
 });
