@@ -212,6 +212,13 @@ App.Router = Backbone.Router.extend({
     $('.def-btn.defcon3').on('click', function(){
       App.socket.emit("setStatus", "defcon3")
     });
+    //topic update behavior
+    App.socket.on('topicUpdate', function(data) {
+      App.topic.set({topic: data});
+
+      $("#classroomTopic").html(data);
+
+    });
 
     //update socket behavior
     App.socket.on("update", function(data) {

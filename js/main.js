@@ -34,7 +34,6 @@ App.Student = Backbone.Model.extend({
 	save: function() {
 		return null;
 	},
-	// commented out, teacher later gets this added
 	initialize: function() {
 		this.on('change', function() {
 			console.log('student model change event');
