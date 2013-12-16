@@ -158,9 +158,9 @@
         <input type="text" class="create-topic-input form-control input-lg" placeholder="Create a new topic">
         <button type="button" class="btn btn-primary create-topic-btn">Create / Reset</button>
         <div class="understand-buttons">
-          <a href="#" class="def-btn defcon1">{{defcon1}}</a>
-          <a href="#" class="def-btn defcon2">{{defcon2}}</a>
-          <a href="#" class="def-btn defcon3 last">{{defcon3}}</a>
+          <a href="#" class="def-btn defcon1">{{#if defcon1}}{{defcon1}}{{else}}0%{{/if}}</a>
+          <a href="#" class="def-btn defcon2">{{#if defcon2}}{{defcon2}}{{else}}0%{{/if}}</a>
+          <a href="#" class="def-btn defcon3 last">{{#if defcon3}}{{defcon3}}{{else}}0%{{/if}}</a>
         </div>
       </div>
     </script>
