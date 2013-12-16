@@ -10,7 +10,9 @@ App.Router = Backbone.Router.extend({
 
   initialize: function() {
     console.log("router initialized");
+    
     App.students = new App.Students();
+    
     App.classrooms = new App.Classrooms();
 
     //Create new topic model

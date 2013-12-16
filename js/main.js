@@ -33,12 +33,46 @@ App.Student = Backbone.Model.extend({
 	//override AJAX save method, don't need it/errors
 	save: function() {
 		return null;
+	},
+	initialize: function() {
+		this.on('change', function() {
+			console.log('student model change event');
+			this.collection.createStatsModel();
+		})
+	}
+});
+
+//Backbone teacher stats model
+App.Stats = Backbone.Model.extend({
+	save: function() {
+		return null;
 	}
 });
 
 // Backbone Students collection
 App.Students = Backbone.Collection.extend({
-	model: App.Student
+	model: App.Student,
+	createStatsModel: function() {
+		var temp = [0,0,0];
+		console.log('createStatsModel works');
+		this.each(function(model) {
+			if (model.get('status') === 'defcon1') {
+				temp[0]++;
+			} else if (model.get('status') === 'defcon2') {
+				temp[1]++;
+			} else if (model.get('status') === 'defcon3') {
+				temp[2]++;
+			}
+		});
+		var totalStudents = temp[0] + temp[1] + temp[2];
+
+		App.stats = new App.Stats({
+			defcon1: 100*(temp[0]/totalStudents)+'%',
+			defcon2: 100*(temp[1]/totalStudents)+'%',
+			defcon3: 100*(temp[2]/totalStudents)+'%'
+		});
+
+	}
 });
 
 // Backbone topic model
